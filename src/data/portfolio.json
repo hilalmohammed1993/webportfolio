@@ -1,0 +1,85 @@
+{
+  "user": {
+    "username": "admin",
+    "password_hash": "$2a$10$UStO4Tz2jDDAmCcY.JrLkONoKzCtPRFWbus2MWbRmQCteYm8jZxTq"
+  },
+  "profile": {
+    "id": 1,
+    "summary": "Updated on Local",
+    "resume_path": "sampleurl.com/resume"
+  },
+  "experience": [
+    {
+      "id": 1,
+      "company": "Example Company",
+      "role": "Senior Accountant",
+      "start_date": "2020-01",
+      "end_date": "Present",
+      "description_html": "<p>Managed full cycle accounting...</p>"
+    },
+    {
+      "id": 2,
+      "company": "Previous Corp",
+      "role": "Business Analyst",
+      "start_date": "2016-05",
+      "end_date": "2019-12",
+      "description_html": "<p>Conducted financial analysis...</p>"
+    }
+  ],
+  "education": {
+    "id": 1,
+    "content_html": "<h3>Bachelor of Commerce in Accounting</h3><p>Tanta University</p>"
+  },
+  "skills": [
+    {
+      "id": 1,
+      "category": "Accounting",
+      "name": "Financial Reporting"
+    },
+    {
+      "id": 2,
+      "category": "Accounting",
+      "name": "Budgeting"
+    },
+    {
+      "id": 3,
+      "category": "Accounting",
+      "name": "Internal Audit"
+    },
+    {
+      "id": 4,
+      "category": "Technical",
+      "name": "Excel"
+    },
+    {
+      "id": 5,
+      "category": "Technical",
+      "name": "SAP"
+    }
+  ],
+  "achievements": {
+    "id": 1,
+    "content_html": "<ul><li>Awarded Employee of the Year 2021</li><li>Certified Public Accountant (CPA)</li></ul>"
+  },
+  "projects": [
+    {
+      "id": 1,
+      "title": "Financial Dashboard",
+      "description": "A dashboard to visualize personal expenses using Python.",
+      "link": "https://github.com/hilalmohammed1993",
+      "image_url": ""
+    }
+  ],
+  "socials": [
+    {
+      "id": 1,
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/in/hilalmohammed1993/"
+    },
+    {
+      "id": 2,
+      "platform": "GitHub",
+      "url": "https://github.com/hilalmohammed1993"
+    }
+  ]
+}
