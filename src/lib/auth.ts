@@ -28,7 +28,7 @@ export async function loginUser(payload: any) {
     cookieStore.set('auth_token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite: 'lax',
         maxAge: 60 * 60 * 24, // 24 hours
         path: '/',
     });

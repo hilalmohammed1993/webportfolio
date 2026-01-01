@@ -3,17 +3,19 @@
 import { useState } from 'react';
 import RichTextEditor from '@/components/ui/RichTextEditor';
 
-export default function SingleContentEditor({ initialData, endpoint }: { initialData: any, endpoint: string }) {
+export default function SingleContentEditor({ initialData, endpoint, onUpdate }: { initialData: any, endpoint: string, onUpdate: (d: any) => void }) {
     const [content, setContent] = useState(initialData?.content_html || '');
     const [saving, setSaving] = useState(false);
 
     const handleSave = async () => {
         setSaving(true);
+        const newData = { content_html: content };
         await fetch(endpoint, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ content_html: content }),
+            body: JSON.stringify(newData),
         });
+        onUpdate(newData);
         setSaving(false);
     };
 

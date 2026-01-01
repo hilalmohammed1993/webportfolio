@@ -29,9 +29,7 @@ export default function Navbar() {
                     <button onClick={() => scrollToSection('skills')} className="hover:text-white transition-colors">Skills</button>
                 </div>
 
-                <Link href="/admin/login" className="px-4 py-2 text-xs font-semibold bg-white/10 hover:bg-white/20 rounded-full transition-all">
-                    Login
-                </Link>
+
             </div>
         </motion.nav>
     );

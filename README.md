@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio CMS (Static Site)
+
+This is a **static portfolio website** optimized for GitHub Pages, featuring a **local-only admin interface**.
 
 ## Getting Started
 
-First, run the development server:
+1.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
+
+2.  **Run Locally (Dev Mode)**:
+    ```bash
+    npm run dev
+    ```
+    - View site: [http://localhost:3000](http://localhost:3000)
+    - **Admin Panel**: [http://localhost:3000/admin](http://localhost:3000/admin)
+        - Since the "Login" button is removed from the public site, you must navigate here manually.
+        - **Credentials**: Stored in `src/data/secure-auth.json`. This file is git-ignored.
+        - Default User: `admin` (check `secure-auth.json` for hash/password reset if needed).
+
+3.  **Edit Content**:
+    - Use the Admin Panel to edit your profile, projects, etc.
+    - Changes are saved immediately to `src/data/portfolio.json`.
+
+4.  **Deploy**:
+    - Commit your changes (including the updated `portfolio.json`).
+    - The `secure-auth.json` file will **NOT** be committed (protected by `.gitignore`).
+    - Push to GitHub.
+
+## Build Process
+
+To build the static site:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Note**: The build script (`scripts/build.js`) automatically:
+1.  Hides the `src/app/admin` and `src/app/api` directories.
+2.  Runs `next build` (static export).
+3.  Restores the directories.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This ensures the **Admin Panel is NOT included** in the public production build.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app`: Next.js App Router.
+- `src/data/portfolio.json`: **Public** data source for the website.
+- `src/data/secure-auth.json`: **Private** admin credentials (Local only).
+- `src/lib/json-db.ts`: Data access layer (Server-side only).

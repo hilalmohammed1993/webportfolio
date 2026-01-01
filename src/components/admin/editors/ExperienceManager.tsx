@@ -5,7 +5,7 @@ import { Plus, Edit, Trash, X, ArrowLeft } from 'lucide-react';
 import RichTextEditor from '@/components/ui/RichTextEditor';
 import { useRouter } from 'next/navigation';
 
-export default function ExperienceManager({ initialData }: { initialData: any[] }) {
+export default function ExperienceManager({ initialData, onUpdate }: { initialData: any[], onUpdate: (d: any) => void }) {
     const [items, setItems] = useState(initialData);
     const [editingItem, setEditingItem] = useState<any>(null);
     const [isCreating, setIsCreating] = useState(false);
@@ -19,6 +19,11 @@ export default function ExperienceManager({ initialData }: { initialData: any[] 
         end_date: '',
         description_html: ''
     });
+
+    const updateState = (newItems: any[]) => {
+        setItems(newItems);
+        onUpdate(newItems);
+    };
 
     const resetForm = () => {
         setFormData({
@@ -47,7 +52,7 @@ export default function ExperienceManager({ initialData }: { initialData: any[] 
     const handleDelete = async (id: number) => {
         if (!confirm('Are you sure?')) return;
         await fetch(`/api/content/experience/${id}`, { method: 'DELETE' });
-        setItems(items.filter(i => i.id !== id));
+        updateState(items.filter(i => i.id !== id));
         router.refresh();
     };
 
@@ -58,7 +63,7 @@ export default function ExperienceManager({ initialData }: { initialData: any[] 
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
-            setItems(items.map(i => i.id === editingItem.id ? { ...i, ...formData } : i));
+            updateState(items.map(i => i.id === editingItem.id ? { ...i, ...formData } : i));
         } else {
             const res = await fetch('/api/content/experience', {
                 method: 'POST',
@@ -66,7 +71,7 @@ export default function ExperienceManager({ initialData }: { initialData: any[] 
                 body: JSON.stringify(formData)
             });
             const data = await res.json();
-            setItems([{ ...formData, id: data.id }, ...items]);
+            updateState([{ ...formData, id: data.id }, ...items]);
         }
         resetForm();
         router.refresh();

@@ -4,16 +4,21 @@ import { useState } from 'react';
 import { Plus, Trash } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-export default function SocialsManager({ initialData }: { initialData: any[] }) {
+export default function SocialsManager({ initialData, onUpdate }: { initialData: any[], onUpdate: (d: any) => void }) {
     const [items, setItems] = useState(initialData);
     const router = useRouter();
 
     const [formData, setFormData] = useState({ platform: '', url: '' });
 
+    const updateState = (newItems: any[]) => {
+        setItems(newItems);
+        onUpdate(newItems);
+    };
+
     const handleDelete = async (id: number) => {
         if (!confirm('Delete social link?')) return;
         await fetch(`/api/content/socials/${id}`, { method: 'DELETE' });
-        setItems(items.filter(i => i.id !== id));
+        updateState(items.filter(i => i.id !== id));
         router.refresh();
     };
 
@@ -24,7 +29,7 @@ export default function SocialsManager({ initialData }: { initialData: any[] }) 
             body: JSON.stringify(formData)
         });
         const data = await res.json();
-        setItems([...items, { ...formData, id: data.id }]);
+        updateState([...items, { ...formData, id: data.id }]);
         setFormData({ platform: '', url: '' });
         router.refresh();
     };

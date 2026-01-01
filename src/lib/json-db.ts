@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 const DB_PATH = path.join(process.cwd(), 'src/data/portfolio.json');
+const AUTH_DB_PATH = path.join(process.cwd(), 'src/data/secure-auth.json');
 
 export function readDB() {
     if (!fs.existsSync(DB_PATH)) {
@@ -71,6 +72,11 @@ export const db = {
         db.skills = db.skills.filter((i: any) => i.id !== id);
         writeDB(db);
     },
+    updateSkill: (id: number, data: any) => {
+        const db = readDB();
+        db.skills = db.skills.map((i: any) => i.id === id ? { ...i, ...data } : i);
+        writeDB(db);
+    },
 
     getProjects: () => readDB().projects,
     addProject: (item: any) => {
@@ -105,5 +111,11 @@ export const db = {
         writeDB(db);
     },
 
-    getUser: () => readDB().user,
+    getUser: () => {
+        if (!fs.existsSync(AUTH_DB_PATH)) {
+            throw new Error('Auth database file not found');
+        }
+        const data = fs.readFileSync(AUTH_DB_PATH, 'utf-8');
+        return JSON.parse(data);
+    },
 };

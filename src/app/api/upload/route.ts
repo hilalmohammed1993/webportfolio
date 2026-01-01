@@ -5,8 +5,8 @@ import { getSession } from '@/lib/auth';
 
 // No DB needed for upload, but we check session which now uses JSON DB user
 export async function POST(request: Request) {
-    const session = await getSession();
-    if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    // const session = await getSession();
+    // if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
     const formData = await request.formData();
     const file = formData.get('file') as File;
@@ -18,13 +18,34 @@ export async function POST(request: Request) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    const filename = Date.now() + '-' + file.name.replace(/[^a-zA-Z0-9.-]/g, '-');
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+    const destination = formData.get('destination') as string;
+
+    let uploadPath;
+    let publicPath;
+
+    if (destination) {
+        // Secure destination to only allow specific files
+        const allowedDestinations = ['resume.pdf', 'assets/word_cloud.png'];
+        if (!allowedDestinations.includes(destination)) {
+            return NextResponse.json({ error: 'Invalid destination' }, { status: 400 });
+        }
+        uploadPath = path.join(process.cwd(), 'public', destination);
+        publicPath = destination.startsWith('assets') ? `/${destination}` : `/${destination}`;
+    } else {
+        const filename = Date.now() + '-' + file.name.replace(/[^a-zA-Z0-9.-]/g, '-');
+        const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+        await mkdir(uploadDir, { recursive: true });
+        uploadPath = path.join(uploadDir, filename);
+        publicPath = `/uploads/${filename}`;
+    }
 
     try {
-        await mkdir(uploadDir, { recursive: true });
-        await writeFile(path.join(uploadDir, filename), buffer);
-        return NextResponse.json({ url: `/uploads/${filename}` });
+        if (destination) {
+            // Ensure directory exists for destination
+            await mkdir(path.dirname(uploadPath), { recursive: true });
+        }
+        await writeFile(uploadPath, buffer);
+        return NextResponse.json({ url: publicPath });
     } catch (e) {
         console.error(e);
         return NextResponse.json({ error: 'Upload failed' }, { status: 500 });

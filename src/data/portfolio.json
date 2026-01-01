@@ -1,8 +1,4 @@
 {
-  "user": {
-    "username": "admin",
-    "password_hash": "$2a$10$UStO4Tz2jDDAmCcY.JrLkONoKzCtPRFWbus2MWbRmQCteYm8jZxTq"
-  },
   "profile": {
     "id": 1,
     "summary": "Updated on Local",

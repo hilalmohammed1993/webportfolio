@@ -26,10 +26,10 @@ export default function Home() {
       <Navbar />
       <Hero profile={profile} />
       <Experience experience={experience} />
+      <Projects projects={projects} />
       <Education education={education} />
       <Skills skills={skills} />
       <Achievements achievements={achievements} />
-      <Projects projects={projects} />
       <Footer socials={socials} />
     </main>
   );

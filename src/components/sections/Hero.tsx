@@ -1,93 +1,86 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { Download, Send } from 'lucide-react';
+import { Download, Linkedin, Github, Mail } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Hero({ profile }: { profile: any }) {
-    const [email, setEmail] = useState('');
-    const [sending, setSending] = useState(false);
-    const [sent, setSent] = useState(false);
-    const [showForm, setShowForm] = useState(false);
-
-    const handleDownload = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setSending(true);
-        try {
-            await fetch('/api/resume', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email }),
-            });
-            setSent(true);
-            setTimeout(() => {
-                setShowForm(false);
-                setSent(false);
-                setEmail('');
-            }, 3000);
-        } catch (err) {
-            console.error(err);
-        } finally {
-            setSending(false);
-        }
-    };
-
     return (
-        <section id="about" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+        <section id="about" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
             {/* Background Glow */}
-            <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-indigo-600/20 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-indigo-500/10 blur-[100px] rounded-full pointer-events-none" />
 
-            <div className="container mx-auto px-6 text-center relative z-10">
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
-                >
-                    Hilal <span className="premium-gradient-text">Mohammed</span>
-                </motion.h1>
+            {/* Container with max-width for neatness */}
+            <div className="container max-w-5xl mx-auto px-6 md:px-12 relative z-10">
+                <div className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-20">
 
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
-                >
-                    {profile?.summary || 'Accountant & Business Analyst'}
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                >
-                    {!showForm ? (
-                        <button
-                            onClick={() => setShowForm(true)}
-                            className="group px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all flex items-center gap-2 mx-auto"
-                        >
-                            <Download size={20} />
-                            Download Resume
-                        </button>
-                    ) : (
-                        <form onSubmit={handleDownload} className="glass p-2 rounded-full flex items-center max-w-md mx-auto">
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="bg-transparent border-none outline-none text-white px-4 py-2 flex-grow placeholder-gray-500"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
+                    {/* Left Side: Word Cloud Image */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="w-full md:w-1/2 flex justify-center md:justify-start"
+                    >
+                        <div className="relative w-[350px] md:w-[450px] aspect-square">
+                            <Image
+                                src="/assets/word_cloud.png"
+                                alt="Product Manager Skills Word Cloud"
+                                fill
+                                className="object-contain drop-shadow-2xl"
+                                priority
                             />
-                            <button
-                                type="submit"
-                                disabled={sending || sent}
-                                className="bg-white text-black p-2 rounded-full hover:bg-gray-200 transition-colors"
+                        </div>
+                    </motion.div>
+
+                    {/* Right Side: Text Content */}
+                    <div className="w-full md:w-1/2 text-center md:text-left">
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-gray-900"
+                        >
+                            Hi, I am <br />
+                            <span className="premium-gradient-text">Hilal Mohammed</span>
+                        </motion.h1>
+
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed font-light"
+                        >
+                            {profile?.summary || 'Product Manager & Strategist'}
+                        </motion.p>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="flex flex-col md:flex-row items-center gap-4"
+                        >
+                            <a
+                                href="/resume.pdf"
+                                download="Hilal_Mohammed_Resume.pdf"
+                                className="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-all flex items-center gap-2 shadow-lg hover:shadow-indigo-500/30"
                             >
-                                {sent ? 'Sent!' : (sending ? '...' : <Send size={18} />)}
-                            </button>
-                        </form>
-                    )}
-                </motion.div>
+                                <Download size={20} />
+                                Download Resume
+                            </a>
+
+                            <div className="flex gap-4">
+                                <a href="https://linkedin.com/in/hilalmohammed1993" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100 text-gray-600 rounded-full hover:bg-white hover:text-indigo-600 hover:shadow-md transition-all">
+                                    <Linkedin size={20} />
+                                </a>
+                                <a href="https://github.com/hilalmohammed1993" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-100 text-gray-600 rounded-full hover:bg-white hover:text-indigo-600 hover:shadow-md transition-all">
+                                    <Github size={20} />
+                                </a>
+                                <a href="mailto:contact@example.com" className="p-3 bg-gray-100 text-gray-600 rounded-full hover:bg-white hover:text-indigo-600 hover:shadow-md transition-all">
+                                    <Mail size={20} />
+                                </a>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
             </div>
         </section>
     );

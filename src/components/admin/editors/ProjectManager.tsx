@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Plus, Edit, Trash, ArrowLeft, Upload } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-export default function ProjectManager({ initialData }: { initialData: any[] }) {
+export default function ProjectManager({ initialData, onUpdate }: { initialData: any[], onUpdate: (d: any) => void }) {
     const [items, setItems] = useState(initialData);
     const [editingItem, setEditingItem] = useState<any>(null);
     const [isCreating, setIsCreating] = useState(false);
@@ -17,6 +17,11 @@ export default function ProjectManager({ initialData }: { initialData: any[] }) 
         link: '',
         image_url: ''
     });
+
+    const updateState = (newItems: any[]) => {
+        setItems(newItems);
+        onUpdate(newItems);
+    };
 
     const resetForm = () => {
         setFormData({ title: '', description: '', link: '', image_url: '' });
@@ -33,7 +38,7 @@ export default function ProjectManager({ initialData }: { initialData: any[] }) 
     const handleDelete = async (id: number) => {
         if (!confirm('Are you sure?')) return;
         await fetch(`/api/content/projects/${id}`, { method: 'DELETE' });
-        setItems(items.filter(i => i.id !== id));
+        updateState(items.filter(i => i.id !== id));
         router.refresh();
     };
 
@@ -61,7 +66,7 @@ export default function ProjectManager({ initialData }: { initialData: any[] }) 
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
-            setItems(items.map(i => i.id === editingItem.id ? { ...i, ...formData } : i));
+            updateState(items.map(i => i.id === editingItem.id ? { ...i, ...formData } : i));
         } else {
             const res = await fetch('/api/content/projects', {
                 method: 'POST',
@@ -69,7 +74,7 @@ export default function ProjectManager({ initialData }: { initialData: any[] }) 
                 body: JSON.stringify(formData)
             });
             const data = await res.json();
-            setItems([{ ...formData, id: data.id }, ...items]);
+            updateState([{ ...formData, id: data.id }, ...items]);
         }
         resetForm();
         router.refresh();
