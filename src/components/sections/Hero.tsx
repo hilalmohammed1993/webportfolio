@@ -59,7 +59,7 @@ export default function Hero({ profile }: { profile: any }) {
                             className="flex flex-col md:flex-row items-center gap-4"
                         >
                             <a
-                                href="/resume.pdf"
+                                href={`${profile?.resume_path || '/resume.pdf'}?v=${Date.now()}`}
                                 download="Hilal_Mohammed_Resume.pdf"
                                 className="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-all flex items-center gap-2 shadow-lg hover:shadow-indigo-500/30"
                             >

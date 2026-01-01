@@ -69,7 +69,7 @@ export default function ProfileEditor({ initialData, onUpdate }: { initialData: 
                             <input
                                 type="file"
                                 className="hidden"
-                                onChange={(e) => handleUpload(e, 'resume.pdf', setUploadingResume)}
+                                onChange={(e) => handleUpload(e, 'resume.pdf', setUploadingResume, (url) => setResumePath(url))}
                                 accept="application/pdf"
                             />
                         </label>
@@ -86,7 +86,10 @@ export default function ProfileEditor({ initialData, onUpdate }: { initialData: 
                             <input
                                 type="file"
                                 className="hidden"
-                                onChange={(e) => handleUpload(e, 'assets/word_cloud.png', setUploadingCloud)}
+                                onChange={(e) => handleUpload(e, 'assets/word_cloud.png', setUploadingCloud, (url) => {
+                                    // Trigger a re-render/refresh for image if needed, or just save path
+                                    console.log('Word cloud uploaded to', url);
+                                })}
                                 accept="image/*"
                             />
                         </label>
