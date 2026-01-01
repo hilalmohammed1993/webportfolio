@@ -1,10 +1,17 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Linkedin, Github, Mail } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Hero({ profile }: { profile: any }) {
+    const [cacheBuster, setCacheBuster] = React.useState('');
+
+    React.useEffect(() => {
+        setCacheBuster(`?v=${Date.now()}`);
+    }, []);
+
     return (
         <section id="about" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
             {/* Background Glow */}
@@ -59,7 +66,7 @@ export default function Hero({ profile }: { profile: any }) {
                             className="flex flex-col md:flex-row items-center gap-4"
                         >
                             <a
-                                href={`${profile?.resume_path || '/resume.pdf'}?v=${Date.now()}`}
+                                href={`${profile?.resume_path || '/resume.pdf'}${cacheBuster}`}
                                 download="Hilal_Mohammed_Resume.pdf"
                                 className="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-all flex items-center gap-2 shadow-lg hover:shadow-indigo-500/30"
                             >
