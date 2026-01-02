@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Upload } from 'lucide-react';
+import RichTextEditor from '@/components/ui/RichTextEditor';
 
 export default function ProfileEditor({ initialData, onUpdate }: { initialData: any, onUpdate: (d: any) => void }) {
     const [summary, setSummary] = useState(initialData?.summary || '');
@@ -51,11 +52,9 @@ export default function ProfileEditor({ initialData, onUpdate }: { initialData: 
         <div className="space-y-6">
             <div>
                 <label className="block text-gray-800 font-medium mb-2">Summary (Intro Text)</label>
-                <textarea
-                    value={summary}
-                    onChange={(e) => setSummary(e.target.value)}
-                    className="w-full h-32 bg-white border border-gray-200 rounded p-4 text-gray-800 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
-                />
+                <div className="text-black">
+                    <RichTextEditor value={summary} onChange={setSummary} />
+                </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

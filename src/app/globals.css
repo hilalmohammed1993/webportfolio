@@ -2,16 +2,17 @@
 
 :root {
   /* Premium Light Mode Palette */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8fafc;
-  --bg-card: rgba(255, 255, 255, 0.8);
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --accent-primary: #4f46e5;
-  /* Indigo 600 */
-  --accent-secondary: #0ea5e9;
-  /* Sky 500 */
-  --accent-glow: rgba(79, 70, 229, 0.15);
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #F5F5F7;
+  /* Slightly darker for contrast */
+  --bg-card: #FFFFFF;
+  --text-primary: #1C1C1C;
+  --text-secondary: #4A4A4A;
+  --accent-primary: #007AFF;
+  /* iOS Blue */
+  --accent-secondary: #007AFF;
+  /* Keep consistent */
+  --accent-glow: rgba(0, 122, 255, 0.15);
 
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(226, 232, 240, 0.6);
@@ -62,13 +63,15 @@ a {
 
 /* Layout Utilities */
 .container {
-  max-width: 1100px; /* Constrained width for neatness */
+  max-width: 1100px;
+  /* Constrained width for neatness */
   margin: 0 auto;
-  padding: 0 40px; /* Ample margins */
+  padding: 0 40px;
+  /* Ample margins */
 }
 
 .section {
-  padding: 80px 0;
+  padding: 100px 0;
 }
 
 /* Animations */

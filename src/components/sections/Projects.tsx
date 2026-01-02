@@ -1,15 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { FolderGit2, ExternalLink, ArrowUpRight } from 'lucide-react';
 
 export default function Projects({ projects }: { projects: any[] }) {
     return (
-        <section id="projects" className="section">
+        <section id="projects" className="section bg-white">
             <div className="container mx-auto px-6">
-                <h2 className="text-3xl font-bold mb-12 text-center premium-gradient-text">Passion Projects</h2>
+                <div className="flex items-center justify-center gap-3 mb-16">
+                    <FolderGit2 className="text-[#007AFF]" size={32} />
+                    <h2 className="text-4xl font-bold text-[#1C1C1C]">Passion Projects</h2>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
@@ -17,28 +20,37 @@ export default function Projects({ projects }: { projects: any[] }) {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="glass overflow-hidden group hover:border-indigo-500/50 transition-colors"
+                            className="group relative"
                         >
-                            {project.image_url && (
-                                <div className="h-48 overflow-hidden">
-                                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img src={project.image_url} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                                </div>
-                            )}
-
-                            <div className="p-6">
-                                <div className="flex justify-between items-start mb-4">
-                                    <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                            <a
+                                href={project.link || '#'}
+                                target={project.link ? "_blank" : "_self"}
+                                rel="noopener noreferrer"
+                                className={`block h-full bg-[#F5F5F7] rounded-2xl p-8 border border-transparent hover:border-gray-200 hover:bg-white hover:shadow-xl transition-all duration-300 ${!project.link && 'cursor-default'}`}
+                            >
+                                <div className="mb-6 flex justify-between items-start">
+                                    <div className="p-3 bg-white rounded-xl shadow-sm group-hover:bg-[#007AFF] group-hover:text-white transition-colors duration-300">
+                                        <FolderGit2 size={24} />
+                                    </div>
                                     {project.link && (
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
-                                            <ExternalLink size={20} />
-                                        </a>
+                                        <ExternalLink size={20} className="text-gray-400 group-hover:text-[#007AFF] transition-colors" />
                                     )}
                                 </div>
-                                <p className="text-gray-400 text-sm leading-relaxed">
+
+                                <h3 className="text-xl font-bold text-[#1C1C1C] mb-3 group-hover:text-[#007AFF] transition-colors">
+                                    {project.title}
+                                </h3>
+
+                                <p className="text-gray-600 leading-relaxed text-sm">
                                     {project.description}
                                 </p>
-                            </div>
+
+                                {project.link && (
+                                    <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <ArrowUpRight className="text-[#007AFF]" size={20} />
+                                    </div>
+                                )}
+                            </a>
                         </motion.div>
                     ))}
                 </div>
