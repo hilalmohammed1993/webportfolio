@@ -22,15 +22,45 @@ export default function Home() {
   const socials = db.getSocials();
 
   return (
-    <main className="bg-img min-h-screen text-white selection:bg-indigo-500/30">
-      <Navbar />
-      <Hero profile={profile} />
-      <Experience experience={experience} />
-      <Projects projects={projects} />
-      <Education education={education} />
-      <Skills skills={skills} />
-      <Achievements achievements={achievements} />
-      <Footer socials={socials} />
+    <main className="bg-[#F4F4F4] min-h-screen pb-20 text-gray-900">
+      <Navbar resumePath={profile.resume_path} />
+
+      {/* Container */}
+      <div className="container mx-auto px-6 py-8 space-y-12">
+        {/* Row 1: Hero */}
+        <Hero profile={profile} />
+
+        {/* Row 2: Experience & Projects */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="space-y-6">
+            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Professional Experience</h2>
+            <Experience experience={experience} />
+          </div>
+          <div className="space-y-6">
+            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Passion Projects</h2>
+            <Projects projects={projects} />
+          </div>
+        </div>
+
+        {/* Row 3: Achievements+Education & Skills */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="space-y-12">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Achievements & Awards</h2>
+              <Achievements achievements={achievements} />
+            </div>
+            <div>
+              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Education</h2>
+              <Education education={education} />
+            </div>
+          </div>
+          <div>
+            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Skills & Tools</h2>
+            <Skills skills={skills} />
+          </div>
+        </div>
+      </div>
+      <Footer profile={profile} />
     </main>
   );
 }

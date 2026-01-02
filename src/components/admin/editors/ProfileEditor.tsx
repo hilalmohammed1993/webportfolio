@@ -7,6 +7,8 @@ import RichTextEditor from '@/components/ui/RichTextEditor';
 export default function ProfileEditor({ initialData, onUpdate }: { initialData: any, onUpdate: (d: any) => void }) {
     const [summary, setSummary] = useState(initialData?.summary || '');
     const [resumePath, setResumePath] = useState(initialData?.resume_path || '');
+    const [email, setEmail] = useState(initialData?.email || '');
+    const [location, setLocation] = useState(initialData?.location || '');
     const [saving, setSaving] = useState(false);
     const [uploadingResume, setUploadingResume] = useState(false);
     const [uploadingCloud, setUploadingCloud] = useState(false);
@@ -38,7 +40,7 @@ export default function ProfileEditor({ initialData, onUpdate }: { initialData: 
 
     const handleSave = async () => {
         setSaving(true);
-        const newData = { summary, resume_path: resumePath };
+        const newData = { summary, resume_path: resumePath, email, location };
         await fetch('/api/content/profile', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -50,12 +52,37 @@ export default function ProfileEditor({ initialData, onUpdate }: { initialData: 
 
     return (
         <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label className="block text-gray-800 font-medium mb-2">Email Address</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full p-2 border rounded-md text-black"
+                        placeholder="you@example.com"
+                    />
+                </div>
+                <div>
+                    <label className="block text-gray-800 font-medium mb-2">Location</label>
+                    <input
+                        type="text"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        className="w-full p-2 border rounded-md text-black"
+                        placeholder="City, Country"
+                    />
+                </div>
+            </div>
+
             <div>
                 <label className="block text-gray-800 font-medium mb-2">Summary (Intro Text)</label>
                 <div className="text-black">
                     <RichTextEditor value={summary} onChange={setSummary} />
                 </div>
             </div>
+
+            {/* ... (Rest of file) ... */}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
