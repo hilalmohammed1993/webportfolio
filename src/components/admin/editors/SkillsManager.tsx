@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Plus, Trash, Edit, X, Check } from 'lucide-react';
+import { Plus, Trash2, Edit, X, Check, ArrowUp, ArrowDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function SkillsManager({ initialData, onUpdate }: { initialData: any[], onUpdate: (d: any) => void }) {
@@ -48,6 +48,10 @@ export default function SkillsManager({ initialData, onUpdate }: { initialData: 
         router.refresh();
     };
 
+    // Derived list of categories
+    const allCategories = Array.from(new Set([...Object.keys(groupedSkills), ...Object.keys(skillInputs)]))
+        .filter(c => c !== 'undefined');
+
     const handleAddCategory = async () => {
         if (!newCategory.trim()) return;
         // Just clear the input and close the modal/form. 
@@ -70,35 +74,103 @@ export default function SkillsManager({ initialData, onUpdate }: { initialData: 
         setNewCategory('');
     };
 
-    // Derived list of categories including any locally added (but empty) ones if we want to support that,
-    // though the simplest is to just rely on existing items.
-    // If a user wants a new category, they need to add the first skill.
-    // Let's implement "Add Category" as "Start a new list".
+    const handleMoveCategory = async (index: number, direction: 'up' | 'down') => {
+        const categories = allCategories;
+        const targetIndex = direction === 'up' ? index - 1 : index + 1;
+        if (targetIndex < 0 || targetIndex >= categories.length) return;
 
-    const allCategories = Array.from(new Set([...Object.keys(groupedSkills), ...Object.keys(skillInputs)]))
-        .filter(c => c !== 'undefined'); // Safety check
+        const newCats = [...categories];
+        const temp = newCats[index];
+        newCats[index] = newCats[targetIndex];
+        newCats[targetIndex] = temp;
+
+        // Reconstruct items array in new category order
+        const newItems = newCats.flatMap(cat => groupedSkills[cat] || []);
+
+        try {
+            const res = await fetch('/api/content/skills', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newItems)
+            });
+            if (res.ok) {
+                updateState(newItems);
+                router.refresh();
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const handleMoveSkill = async (category: string, index: number, direction: 'up' | 'down') => {
+        const catSkills = [...(groupedSkills[category] || [])];
+        const targetIndex = direction === 'up' ? index - 1 : index + 1;
+        if (targetIndex < 0 || targetIndex >= catSkills.length) return;
+
+        const temp = catSkills[index];
+        catSkills[index] = catSkills[targetIndex];
+        catSkills[targetIndex] = temp;
+
+        // Reconstruct items array
+        const newItems = allCategories.flatMap(cat =>
+            cat === category ? catSkills : (groupedSkills[cat] || [])
+        );
+
+        try {
+            const res = await fetch('/api/content/skills', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newItems)
+            });
+            if (res.ok) {
+                updateState(newItems);
+                router.refresh();
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const handleDeleteCategory = async (category: string) => {
+        if (!confirm(`Delete category "${category}"?`)) return;
+        const newItems = items.filter(i => i.category !== category);
+
+        try {
+            const res = await fetch('/api/content/skills', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newItems)
+            });
+            if (res.ok) {
+                updateState(newItems);
+                router.refresh();
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     return (
         <div className="space-y-6">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center text-black">
                 <h3 className="text-xl font-bold text-gray-800">Skills Library</h3>
                 <div className="flex gap-2">
                     {isAddingCategory ? (
-                        <div className="flex items-center gap-2 bg-white p-1 rounded border border-indigo-100 shadow-sm animate-in fade-in zoom-in-95">
+                        <>
                             <input
-                                autoFocus
-                                className="px-2 py-1 text-sm border-none outline-none focus:ring-0 w-40"
-                                placeholder="New Category Name..."
+                                type="text"
                                 value={newCategory}
-                                onChange={e => setNewCategory(e.target.value)}
-                                onKeyDown={e => {
-                                    if (e.key === 'Enter') handleAddCategory();
-                                    if (e.key === 'Escape') setIsAddingCategory(false);
-                                }}
+                                onChange={(e) => setNewCategory(e.target.value)}
+                                placeholder="New category name..."
+                                className="p-2 border rounded text-black text-sm w-48"
                             />
-                            <button onClick={handleAddCategory} className="p-1 text-green-600 hover:bg-green-50 rounded"><Check size={16} /></button>
-                            <button onClick={() => setIsAddingCategory(false)} className="p-1 text-gray-400 hover:bg-gray-100 rounded"><X size={16} /></button>
-                        </div>
+                            <button
+                                onClick={handleAddCategory}
+                                className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition text-sm flex items-center gap-2"
+                            >
+                                <Plus size={16} /> Add
+                            </button>
+                        </>
                     ) : (
                         <button
                             onClick={() => setIsAddingCategory(true)}
@@ -110,24 +182,69 @@ export default function SkillsManager({ initialData, onUpdate }: { initialData: 
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {allCategories.map(category => (
-                    <div key={category} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-all flex flex-col h-full">
-                        <div className="flex justify-between items-start mb-4">
-                            <h4 className="font-bold text-lg text-gray-800">{category}</h4>
-                            {/* Optional: Delete entire category button? Maybe too dangerous. */}
+            <div className="grid grid-cols-1 gap-6">
+                {allCategories.map((category, catIndex) => (
+                    <div key={category} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm flex flex-col h-full">
+                        <div className="flex justify-between items-center mb-6 pb-2 border-b">
+                            <div className="flex items-center gap-4">
+                                <h4 className="text-lg font-bold text-indigo-600 uppercase tracking-wider">{category}</h4>
+                                <div className="flex gap-1">
+                                    <button
+                                        onClick={() => handleMoveCategory(catIndex, 'up')}
+                                        disabled={catIndex === 0}
+                                        className="p-1.5 text-gray-400 hover:text-gray-600 disabled:opacity-20"
+                                        title="Move Category Up"
+                                    >
+                                        <ArrowUp size={16} />
+                                    </button>
+                                    <button
+                                        onClick={() => handleMoveCategory(catIndex, 'down')}
+                                        disabled={catIndex === allCategories.length - 1}
+                                        className="p-1.5 text-gray-400 hover:text-gray-600 disabled:opacity-20"
+                                        title="Move Category Down"
+                                    >
+                                        <ArrowDown size={16} />
+                                    </button>
+                                </div>
+                            </div>
+                            <button
+                                onClick={() => handleDeleteCategory(category)}
+                                className="text-red-400 hover:text-red-600 p-1.5 transition-colors"
+                                title="Delete Category"
+                            >
+                                <Trash2 size={18} />
+                            </button>
                         </div>
 
-                        <div className="flex flex-wrap gap-2 mb-4 flex-grow content-start">
-                            {(groupedSkills[category] || []).map(skill => (
-                                <div key={skill.id} className="group flex items-center gap-2 px-3 py-1.5 bg-gray-50 text-gray-700 rounded-full border border-gray-200 hover:border-indigo-200 hover:bg-indigo-50 transition-colors">
-                                    <span className="text-sm font-medium">{skill.name}</span>
-                                    <button
-                                        onClick={() => handleDelete(skill.id)}
-                                        className="text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
-                                    >
-                                        <X size={14} />
-                                    </button>
+                        <div className="flex flex-wrap gap-3 mb-6 flex-grow content-start">
+                            {(groupedSkills[category] || []).map((skill, skillIndex) => (
+                                <div
+                                    key={skill.id}
+                                    className="flex items-center gap-2 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-lg group"
+                                >
+                                    <span className="text-sm font-medium text-gray-700">{skill.name}</span>
+                                    <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity border-l pl-2 ml-1">
+                                        <button
+                                            onClick={() => handleMoveSkill(category, skillIndex, 'up')}
+                                            disabled={skillIndex === 0}
+                                            className="text-gray-400 hover:text-indigo-600 disabled:opacity-0"
+                                        >
+                                            <ArrowUp size={14} />
+                                        </button>
+                                        <button
+                                            onClick={() => handleMoveSkill(category, skillIndex, 'down')}
+                                            disabled={skillIndex === (groupedSkills[category] || []).length - 1}
+                                            className="text-gray-400 hover:text-indigo-600 disabled:opacity-0"
+                                        >
+                                            <ArrowDown size={14} />
+                                        </button>
+                                        <button
+                                            onClick={() => handleDelete(skill.id)}
+                                            className="ml-1 text-gray-400 hover:text-red-600"
+                                        >
+                                            <X size={14} />
+                                        </button>
+                                    </div>
                                 </div>
                             ))}
                             {(groupedSkills[category] || []).length === 0 && (

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Plus, Edit, Trash, ArrowLeft, Upload } from 'lucide-react';
+import { Plus, Edit, Trash, ArrowLeft, Upload, ArrowUp, ArrowDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function ProjectManager({ initialData, onUpdate }: { initialData: any[], onUpdate: (d: any) => void }) {
@@ -59,6 +59,30 @@ export default function ProjectManager({ initialData, onUpdate }: { initialData:
         }
     };
 
+    const handleMove = async (index: number, direction: 'up' | 'down') => {
+        const newArr = [...items];
+        const targetIndex = direction === 'up' ? index - 1 : index + 1;
+        if (targetIndex < 0 || targetIndex >= newArr.length) return;
+
+        const temp = newArr[index];
+        newArr[index] = newArr[targetIndex];
+        newArr[targetIndex] = temp;
+
+        try {
+            const res = await fetch('/api/content/projects', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newArr),
+            });
+            if (res.ok) {
+                updateState(newArr);
+                router.refresh();
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     const handleSave = async () => {
         if (editingItem) {
             await fetch(`/api/content/projects/${editingItem.id}`, {
@@ -81,6 +105,7 @@ export default function ProjectManager({ initialData, onUpdate }: { initialData:
     };
 
     if (isCreating || editingItem) {
+        // ... (rest of the form remains same)
         return (
             <div className="space-y-6">
                 <button onClick={resetForm} className="flex items-center gap-2 text-gray-400 hover:text-white">
@@ -147,9 +172,25 @@ export default function ProjectManager({ initialData, onUpdate }: { initialData:
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {items.map((item) => (
+                {items.map((item, index) => (
                     <div key={item.id} className="bg-black/20 border border-white/10 p-4 rounded flex justify-between items-start">
                         <div className="flex gap-4">
+                            <div className="flex flex-col gap-1">
+                                <button
+                                    onClick={() => handleMove(index, 'up')}
+                                    disabled={index === 0}
+                                    className="p-1 text-gray-500 hover:text-white disabled:opacity-20"
+                                >
+                                    <ArrowUp size={14} />
+                                </button>
+                                <button
+                                    onClick={() => handleMove(index, 'down')}
+                                    disabled={index === items.length - 1}
+                                    className="p-1 text-gray-500 hover:text-white disabled:opacity-20"
+                                >
+                                    <ArrowDown size={14} />
+                                </button>
+                            </div>
                             {item.image_url && (
                                 // eslint-disable-next-line @next/next/no-img-element
                                 <img src={item.image_url} alt="" className="w-16 h-16 object-cover rounded" />

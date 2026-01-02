@@ -51,17 +51,30 @@ export default function Hero({ profile }: { profile: any }) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.2 }}
-                            className="flex items-center justify-center md:justify-start gap-4 mt-6"
+                            className="flex items-center justify-center md:justify-start gap-3 mt-8"
                         >
-                            <a href="https://linkedin.com/in/hilalmohammed1993" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#0077B5] transition-colors">
-                                <Linkedin size={28} />
+                            <a
+                                href="https://linkedin.com/in/hilalmohammed1993"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-11 h-11 flex items-center justify-center border border-gray-200 rounded-full text-gray-400 hover:text-[#0077B5] hover:border-[#0077B5] hover:bg-blue-50 transition-all"
+                            >
+                                <Linkedin size={20} />
                             </a>
-                            <a href="https://github.com/hilalmohammed1993" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-900 transition-colors">
-                                <Github size={28} />
+                            <a
+                                href="https://github.com/hilalmohammed1993"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-11 h-11 flex items-center justify-center border border-gray-200 rounded-full text-gray-400 hover:text-gray-900 hover:border-gray-900 hover:bg-gray-50 transition-all"
+                            >
+                                <Github size={20} />
                             </a>
                             {profile?.email && (
-                                <a href={`mailto:${profile.email}`} className="text-gray-400 hover:text-red-500 transition-colors">
-                                    <Mail size={28} />
+                                <a
+                                    href={`mailto:${profile.email}`}
+                                    className="w-11 h-11 flex items-center justify-center border border-gray-200 rounded-full text-gray-400 hover:text-red-500 hover:border-red-500 hover:bg-red-50 transition-all"
+                                >
+                                    <Mail size={20} />
                                 </a>
                             )}
                         </motion.div>

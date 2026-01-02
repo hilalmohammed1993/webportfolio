@@ -45,7 +45,7 @@ export default function Navbar({ resumePath }: { resumePath?: string }) {
                 <a
                     href={resumePath || '/resume.pdf'}
                     download="Hilal_Mohammed_Resume.pdf"
-                    className="hidden md:block px-6 py-2.5 bg-[#5B8CB9] text-white text-sm font-bold rounded hover:bg-[#4A7CA9] transition-colors shadow-sm"
+                    className="hidden md:block px-6 py-2 bg-[#5B8CB9] text-white text-[13px] font-bold rounded-lg hover:bg-[#4A7CA9] transition-colors shadow-sm h-11 flex items-center"
                 >
                     Download Resume
                 </a>

@@ -32,11 +32,11 @@ export default function Home() {
 
         {/* Row 2: Experience & Projects */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="space-y-6">
+          <div id="experience" className="space-y-6 scroll-mt-24">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Professional Experience</h2>
             <Experience experience={experience} />
           </div>
-          <div className="space-y-6">
+          <div id="projects" className="space-y-6 scroll-mt-24">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Passion Projects</h2>
             <Projects projects={projects} />
           </div>
@@ -49,12 +49,12 @@ export default function Home() {
               <h2 className="text-2xl font-bold text-gray-800 mb-6">Achievements & Awards</h2>
               <Achievements achievements={achievements} />
             </div>
-            <div>
+            <div id="education" className="scroll-mt-24">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Education</h2>
               <Education education={education} />
             </div>
           </div>
-          <div>
+          <div id="skills" className="scroll-mt-24">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Skills & Tools</h2>
             <Skills skills={skills} />
           </div>

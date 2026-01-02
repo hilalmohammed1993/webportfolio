@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Plus, Edit, Trash, X, ArrowLeft } from 'lucide-react';
+import { Plus, Edit, Trash, X, ArrowLeft, ArrowUp, ArrowDown } from 'lucide-react';
 import RichTextEditor from '@/components/ui/RichTextEditor';
 import { useRouter } from 'next/navigation';
 
@@ -49,11 +49,29 @@ export default function ExperienceManager({ initialData, onUpdate }: { initialDa
         setIsCreating(false);
     };
 
-    const handleDelete = async (id: number) => {
-        if (!confirm('Are you sure?')) return;
-        await fetch(`/api/content/experience/${id}`, { method: 'DELETE' });
-        updateState(items.filter(i => i.id !== id));
-        router.refresh();
+    const handleMove = async (index: number, direction: 'up' | 'down') => {
+        const newArr = [...items];
+        const targetIndex = direction === 'up' ? index - 1 : index + 1;
+        if (targetIndex < 0 || targetIndex >= newArr.length) return;
+
+        const temp = newArr[index];
+        newArr[index] = newArr[targetIndex];
+        newArr[targetIndex] = temp;
+
+        // Persist the new order by saving the whole array
+        try {
+            const res = await fetch('/api/content/experience', {
+                method: 'POST', // The endpoint seems to handle bulk update/replacement
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newArr),
+            });
+            if (res.ok) {
+                updateState(newArr);
+                router.refresh();
+            }
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     const handleSave = async () => {
@@ -74,6 +92,13 @@ export default function ExperienceManager({ initialData, onUpdate }: { initialDa
             updateState([{ ...formData, id: data.id }, ...items]);
         }
         resetForm();
+        router.refresh();
+    };
+
+    const handleDelete = async (id: number) => {
+        if (!confirm('Are you sure?')) return;
+        await fetch(`/api/content/experience/${id}`, { method: 'DELETE' });
+        updateState(items.filter(i => i.id !== id));
         router.refresh();
     };
 
@@ -144,11 +169,29 @@ export default function ExperienceManager({ initialData, onUpdate }: { initialDa
             </div>
 
             <div className="space-y-3">
-                {items.map(item => (
+                {items.map((item, index) => (
                     <div key={item.id} className="bg-black/20 border border-white/10 p-4 rounded flex justify-between items-center">
-                        <div>
-                            <h4 className="font-bold text-white">{item.role} @ {item.company}</h4>
-                            <p className="text-sm text-gray-500">{item.start_date} - {item.end_date}</p>
+                        <div className="flex items-center gap-4">
+                            <div className="flex flex-col gap-1">
+                                <button
+                                    onClick={() => handleMove(index, 'up')}
+                                    disabled={index === 0}
+                                    className="p-1 text-gray-500 hover:text-white disabled:opacity-20"
+                                >
+                                    <ArrowUp size={14} />
+                                </button>
+                                <button
+                                    onClick={() => handleMove(index, 'down')}
+                                    disabled={index === items.length - 1}
+                                    className="p-1 text-gray-500 hover:text-white disabled:opacity-20"
+                                >
+                                    <ArrowDown size={14} />
+                                </button>
+                            </div>
+                            <div>
+                                <h4 className="font-bold text-white">{item.role} @ {item.company}</h4>
+                                <p className="text-sm text-gray-500">{item.start_date} - {item.end_date}</p>
+                            </div>
                         </div>
                         <div className="flex gap-2">
                             <button onClick={() => handleEdit(item)} className="p-2 hover:bg-white/10 rounded text-indigo-400">

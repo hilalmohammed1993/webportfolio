@@ -33,7 +33,7 @@ export default function Projects({ projects }: { projects: any[] }) {
                             href={project.link || '#'}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full py-2.5 bg-[#5B8CB9] text-white text-sm font-bold rounded hover:bg-[#4A7CA9] transition-colors shadow-sm"
+                            className="w-full py-2.5 bg-[#5B8CB9] text-white text-[13px] font-bold rounded-lg hover:bg-[#4A7CA9] transition-colors shadow-sm text-center"
                         >
                             View on Github
                         </a>
