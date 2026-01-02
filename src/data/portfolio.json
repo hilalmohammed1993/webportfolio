@@ -6,12 +6,20 @@
   },
   "experience": [
     {
+      "company": "HCL Technologies | Giantview Technologies | QBurst Technologies",
+      "role": "Early Career Roles - Engineering & Product",
+      "start_date": "08-2016",
+      "end_date": "12-2022",
+      "description_html": "<ul><li>Led&nbsp;process&nbsp;improvement&nbsp;initiatives&nbsp;for&nbsp;tech&nbsp;clients,&nbsp;identifying&nbsp;$800K&nbsp;in&nbsp;potential&nbsp;savings&nbsp;through&nbsp;time-and-motion&nbsp;studies.</li><li>Unified&nbsp;processes&nbsp;across&nbsp;domains,&nbsp;eliminating&nbsp;61.9%&nbsp;redundancies&nbsp;and&nbsp;driving&nbsp;15%&nbsp;cross-function&nbsp;efficiency&nbsp;gains.</li><li>Delivered&nbsp;cross-functional&nbsp;process&nbsp;improvements&nbsp;and&nbsp;automation&nbsp;solutions&nbsp;for&nbsp;enterprise&nbsp;clients,&nbsp;including&nbsp;Google,&nbsp;through&nbsp;program&nbsp;management&nbsp;and&nbsp;transformation&nbsp;initiatives.</li><li>Conducted&nbsp;gap&nbsp;analysis,&nbsp;time-and-motion&nbsp;studies,&nbsp;and&nbsp;implemented&nbsp;best&nbsp;practices&nbsp;aligned&nbsp;with&nbsp;COPC&nbsp;standards.</li><li>Developed&nbsp;and&nbsp;maintained&nbsp;web&nbsp;applications&nbsp;using&nbsp;PHP,&nbsp;Drupal,&nbsp;WordPress,&nbsp;Laravel,&nbsp;and&nbsp;JavaScript&nbsp;for&nbsp;7+&nbsp;websites.</li><li>Prototyped&nbsp;features&nbsp;and&nbsp;authored&nbsp;PRDs&nbsp;during&nbsp;a&nbsp;product&nbsp;management&nbsp;internship&nbsp;focused&nbsp;on&nbsp;influencer&nbsp;marketing&nbsp;tools&nbsp;(e.g.,&nbsp;Socialbook,&nbsp;Upfluence).</li></ul><p></p>",
+      "id": 1767260568864
+    },
+    {
       "id": 1,
       "company": "Marketstar",
       "role": "Product Manager",
       "start_date": "2024-08",
       "end_date": "Present",
-      "description_html": "<p>Managed&nbsp;full&nbsp;cycle&nbsp;accounting...</p>"
+      "description_html": "<ul><li>Leading&nbsp;end-to-end&nbsp;development&nbsp;of&nbsp;an&nbsp;AI-driven&nbsp;intelligence&nbsp;platform&nbsp;integrating&nbsp;structured&nbsp;and&nbsp;unstructured&nbsp;communication&nbsp;data&nbsp;to&nbsp;deliver&nbsp;real-time&nbsp;analytics&nbsp;and&nbsp;insights.</li><li>Designed&nbsp;data&nbsp;ingestion&nbsp;and&nbsp;contextual&nbsp;awareness&nbsp;models&nbsp;to&nbsp;improve&nbsp;simulation&nbsp;realism&nbsp;and&nbsp;decision&nbsp;accuracy&nbsp;by&nbsp;25%.</li><li>Collaborated&nbsp;with&nbsp;BE&nbsp;teams&nbsp;to&nbsp;build&nbsp;data&nbsp;processing&nbsp;pipelines&nbsp;using&nbsp;streaming&nbsp;architectures,&nbsp;cutting&nbsp;response&nbsp;latency&nbsp;by&nbsp;50%.</li><li>Defined&nbsp;API&nbsp;strategy&nbsp;and&nbsp;external&nbsp;integrations&nbsp;for&nbsp;client&nbsp;data&nbsp;sync,&nbsp;enabling&nbsp;interoperability&nbsp;with&nbsp;LMS&nbsp;&amp;&nbsp;CRM&nbsp;platforms.</li><li>Partnered&nbsp;with&nbsp;UI/UX&nbsp;teams&nbsp;to&nbsp;create&nbsp;visual&nbsp;dashboards&nbsp;for&nbsp;tracking&nbsp;performance&nbsp;and&nbsp;behavioral&nbsp;analytics&nbsp;across&nbsp;33+&nbsp;languages</li><li>Reduced&nbsp;evaluation&nbsp;variance&nbsp;across&nbsp;AI&nbsp;models&nbsp;by&nbsp;70%&nbsp;through&nbsp;optimized&nbsp;scoring&nbsp;and&nbsp;data&nbsp;segregation&nbsp;methodologies.</li><li>Managed&nbsp;enterprise&nbsp;clients&nbsp;including&nbsp;Google,&nbsp;Reddit,&nbsp;Equinix,&nbsp;and&nbsp;Atlassian,&nbsp;delivering&nbsp;scalable&nbsp;intelligence&nbsp;&amp;&nbsp;training&nbsp;solutions.</li><li>Oversaw&nbsp;secure&nbsp;deployments&nbsp;via&nbsp;GCP&nbsp;migration,&nbsp;achieving&nbsp;15%&nbsp;cost&nbsp;savings&nbsp;and&nbsp;30%&nbsp;performance&nbsp;improvement.</li></ul>"
     },
     {
       "id": 2,
@@ -19,38 +27,208 @@
       "role": "Product Manager",
       "start_date": "2022-12",
       "end_date": "2024-08",
-      "description_html": "<p>Conducted&nbsp;financial&nbsp;analysis...</p>"
+      "description_html": "<ul><li>Directed&nbsp;data-driven&nbsp;communication&nbsp;and&nbsp;analytics&nbsp;platform&nbsp;serving&nbsp;10M+&nbsp;SMB&nbsp;users,&nbsp;enhancing&nbsp;call&nbsp;conversions&nbsp;by&nbsp;15%&nbsp;through&nbsp;intelligent&nbsp;feature&nbsp;delivery.</li><li>Built&nbsp;real-time&nbsp;reporting&nbsp;dashboards&nbsp;consolidating&nbsp;structured/unstructured&nbsp;call&nbsp;and&nbsp;chat&nbsp;data&nbsp;for&nbsp;business&nbsp;insights.</li><li>Collaborated&nbsp;with&nbsp;telecom&nbsp;partners&nbsp;to&nbsp;optimize&nbsp;cloud&nbsp;telephony&nbsp;infrastructure,&nbsp;achieving&nbsp;70–90%&nbsp;operational&nbsp;cost&nbsp;savings.</li><li>Implemented&nbsp;AI&nbsp;chatbots&nbsp;(DialogFlow&nbsp;+&nbsp;GPT)&nbsp;for&nbsp;intelligent&nbsp;query&nbsp;handling,&nbsp;reducing&nbsp;manual&nbsp;workload&nbsp;by&nbsp;25%.</li><li>Coordinated&nbsp;across&nbsp;HR,&nbsp;ops,&nbsp;and&nbsp;data&nbsp;science&nbsp;teams&nbsp;to&nbsp;align&nbsp;automation&nbsp;initiatives&nbsp;with&nbsp;business&nbsp;strategy&nbsp;and&nbsp;KPI&nbsp;tracking.</li></ul>"
     }
   ],
   "education": {
     "id": 1,
-    "content_html": "<h3>Bachelor of Commerce in Accounting</h3><p>Tanta University</p>"
+    "content_html": "<p><strong>Indian&nbsp;Institute&nbsp;of&nbsp;Management&nbsp;(IIM)&nbsp;Visakhapatnam&nbsp;</strong>|&nbsp;<em>MBA&nbsp;</em>(GPA:&nbsp;3.01/4.00)&nbsp;\t\t\t\t\t\t\t<strong>2019&nbsp;-&nbsp;2021</strong></p><p><strong>Govt.&nbsp;ModelEngineering&nbsp;College&nbsp;</strong>|&nbsp;<em>B.Tech.,&nbsp;Computer&nbsp;Science&nbsp;Engineering&nbsp;</em>(GPA:&nbsp;7.22/10.00)&nbsp;&nbsp;\t<strong>2012&nbsp;-&nbsp;2016</strong></p><p><strong>Sharjah&nbsp;Indian&nbsp;School&nbsp;</strong>|&nbsp;Class&nbsp;XII&nbsp;(2012)&nbsp;–&nbsp;[90%]&nbsp;|&nbsp;Class&nbsp;X&nbsp;(2010)&nbsp;–&nbsp;[9.0/10.0]</p>"
   },
   "skills": [
     {
       "id": 1,
-      "category": "Accounting",
-      "name": "Financial Reporting"
-    },
-    {
-      "id": 2,
-      "category": "Accounting",
-      "name": "Budgeting"
-    },
-    {
-      "id": 3,
-      "category": "Accounting",
-      "name": "Internal Audit"
+      "category": "AI & ML",
+      "name": "LLM Integration"
     },
     {
       "id": 4,
-      "category": "Technical",
-      "name": "Excel"
+      "category": "AI & ML",
+      "name": "Contextual Memory"
     },
     {
       "id": 5,
-      "category": "Technical",
-      "name": "SAP"
+      "category": "AI & ML",
+      "name": "Persona Control"
+    },
+    {
+      "category": "AI & ML",
+      "name": "Agentic AI",
+      "id": 1767262028623
+    },
+    {
+      "category": "AI & ML",
+      "name": "Natural Language Processing",
+      "id": 1767334130211
+    },
+    {
+      "category": "AI & ML",
+      "name": "Prompt Engineering",
+      "id": 1767334160837
+    },
+    {
+      "category": "Product Management",
+      "name": "0→1 Roadmapping",
+      "id": 1767334228365
+    },
+    {
+      "category": "Product Management",
+      "name": "Customer Lifecycle Management",
+      "id": 1767334242650
+    },
+    {
+      "category": "Product Management",
+      "name": "Agile Delivery",
+      "id": 1767334256091
+    },
+    {
+      "category": "Product Management",
+      "name": "A/B Testing",
+      "id": 1767334260091
+    },
+    {
+      "category": "Growth and Anaytics",
+      "name": "User Acquisition Funnels",
+      "id": 1767334317298
+    },
+    {
+      "category": "Growth and Anaytics",
+      "name": "Predictive Analytics",
+      "id": 1767334326031
+    },
+    {
+      "category": "Growth and Anaytics",
+      "name": "Intelligence Dashboards",
+      "id": 1767334337712
+    },
+    {
+      "category": "Growth and Anaytics",
+      "name": "Amplitude",
+      "id": 1767334346757
+    },
+    {
+      "category": "Growth and Anaytics",
+      "name": "MixPanel",
+      "id": 1767334351021
+    },
+    {
+      "category": "UX and Engagement",
+      "name": "Personalization",
+      "id": 1767334393799
+    },
+    {
+      "category": "UX and Engagement",
+      "name": "Retention Strategy",
+      "id": 1767334402514
+    },
+    {
+      "category": "UX and Engagement",
+      "name": "Feedback Loops",
+      "id": 1767334409337
+    },
+    {
+      "category": "UX and Engagement",
+      "name": "Mobile/Web Experience",
+      "id": 1767334413941
+    },
+    {
+      "category": "Tools and Tech",
+      "name": "Generative AI",
+      "id": 1767334462988
+    },
+    {
+      "category": "Tools and Tech",
+      "name": "Agentic AI",
+      "id": 1767334470868
+    },
+    {
+      "category": "Tools and Tech",
+      "name": "PowerBI",
+      "id": 1767334477192
+    },
+    {
+      "category": "Tools and Tech",
+      "name": "Google Analytics",
+      "id": 1767334490658
+    },
+    {
+      "category": "Tools and Tech",
+      "name": "GTM",
+      "id": 1767334498306
+    },
+    {
+      "category": "Tools and Tech",
+      "name": "DialogFlow",
+      "id": 1767334506457
+    },
+    {
+      "category": "Tools and Tech",
+      "name": "Firebase",
+      "id": 1767334513315
+    },
+    {
+      "category": "Tools and Tech",
+      "name": "GCP",
+      "id": 1767334519708
+    },
+    {
+      "category": "Tools and Tech",
+      "name": "Wireframing and Prototyping",
+      "id": 1767334529976
+    },
+    {
+      "category": "Methodologies",
+      "name": "Agile (Scrum/Kanban)",
+      "id": 1767334565540
+    },
+    {
+      "category": "Methodologies",
+      "name": "OKRs",
+      "id": 1767334572514
+    },
+    {
+      "category": "Methodologies",
+      "name": "User Research",
+      "id": 1767334579785
+    },
+    {
+      "category": "Methodologies",
+      "name": "Market/Competitor Analysis",
+      "id": 1767334584973
+    },
+    {
+      "category": "Tech Stack",
+      "name": "Python",
+      "id": 1767334623498
+    },
+    {
+      "category": "Tech Stack",
+      "name": "Node",
+      "id": 1767334634388
+    },
+    {
+      "category": "Tech Stack",
+      "name": "React",
+      "id": 1767334644572
+    },
+    {
+      "category": "Tech Stack",
+      "name": "PHP",
+      "id": 1767334651796
+    },
+    {
+      "category": "Tech Stack",
+      "name": "REST APIs",
+      "id": 1767334659605
+    },
+    {
+      "category": "Tech Stack",
+      "name": "JS",
+      "id": 1767334669445
+    },
+    {
+      "category": "Tech Stack",
+      "name": "HTML CSS",
+      "id": 1767334674605
     }
   ],
   "achievements": {
