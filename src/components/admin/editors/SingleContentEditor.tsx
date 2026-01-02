@@ -12,6 +12,7 @@ export default function SingleContentEditor({ initialData, endpoint, onUpdate }:
         const newData = { content_html: content };
         await fetch(endpoint, {
             method: 'PUT',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newData),
         });

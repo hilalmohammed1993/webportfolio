@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-const DB_PATH = path.join(process.cwd(), 'src/data/portfolio.json');
-const AUTH_DB_PATH = path.join(process.cwd(), 'src/data/secure-auth.json');
+const DB_PATH = path.resolve(process.cwd(), 'src/data/portfolio.json');
+const AUTH_DB_PATH = path.resolve(process.cwd(), 'src/data/secure-auth.json');
 
 export function readDB() {
     if (!fs.existsSync(DB_PATH)) {
@@ -13,7 +13,10 @@ export function readDB() {
 }
 
 export function writeDB(data: any) {
+    console.log('[writeDB] Writing to:', DB_PATH);
+    console.log('[writeDB] Data keys:', Object.keys(data));
     fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+    console.log('[writeDB] Write complete');
 }
 
 // Helpers to mimic SQLite structure
@@ -27,6 +30,11 @@ export const db = {
     },
 
     getExperience: () => readDB().experience,
+    setExperience: (items: any[]) => {
+        const db = readDB();
+        db.experience = items;
+        writeDB(db);
+    },
     addExperience: (item: any) => {
         const db = readDB();
         const newItem = { ...item, id: Date.now() };
@@ -60,6 +68,11 @@ export const db = {
     },
 
     getSkills: () => readDB().skills,
+    setSkills: (items: any[]) => {
+        const db = readDB();
+        db.skills = items;
+        writeDB(db);
+    },
     addSkill: (item: any) => {
         const db = readDB();
         const newItem = { ...item, id: Date.now() };
@@ -79,6 +92,11 @@ export const db = {
     },
 
     getProjects: () => readDB().projects,
+    setProjects: (items: any[]) => {
+        const db = readDB();
+        db.projects = items;
+        writeDB(db);
+    },
     addProject: (item: any) => {
         const db = readDB();
         const newItem = { ...item, id: Date.now() };

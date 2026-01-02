@@ -17,7 +17,7 @@ export default function SocialsManager({ initialData, onUpdate }: { initialData:
 
     const handleDelete = async (id: number) => {
         if (!confirm('Delete social link?')) return;
-        await fetch(`/api/content/socials/${id}`, { method: 'DELETE' });
+        await fetch(`/api/content/socials/${id}`, { method: 'DELETE', credentials: 'include' });
         updateState(items.filter(i => i.id !== id));
         router.refresh();
     };
@@ -25,6 +25,7 @@ export default function SocialsManager({ initialData, onUpdate }: { initialData:
     const handleCreate = async () => {
         const res = await fetch('/api/content/socials', {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         });

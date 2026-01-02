@@ -61,7 +61,8 @@ export default function ExperienceManager({ initialData, onUpdate }: { initialDa
         // Persist the new order by saving the whole array
         try {
             const res = await fetch('/api/content/experience', {
-                method: 'POST', // The endpoint seems to handle bulk update/replacement
+                method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newArr),
             });
@@ -78,6 +79,7 @@ export default function ExperienceManager({ initialData, onUpdate }: { initialDa
         if (editingItem) {
             await fetch(`/api/content/experience/${editingItem.id}`, {
                 method: 'PUT',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
@@ -85,6 +87,7 @@ export default function ExperienceManager({ initialData, onUpdate }: { initialDa
         } else {
             const res = await fetch('/api/content/experience', {
                 method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
@@ -97,7 +100,7 @@ export default function ExperienceManager({ initialData, onUpdate }: { initialDa
 
     const handleDelete = async (id: number) => {
         if (!confirm('Are you sure?')) return;
-        await fetch(`/api/content/experience/${id}`, { method: 'DELETE' });
+        await fetch(`/api/content/experience/${id}`, { method: 'DELETE', credentials: 'include' });
         updateState(items.filter(i => i.id !== id));
         router.refresh();
     };

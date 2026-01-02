@@ -37,7 +37,7 @@ export default function ProjectManager({ initialData, onUpdate }: { initialData:
 
     const handleDelete = async (id: number) => {
         if (!confirm('Are you sure?')) return;
-        await fetch(`/api/content/projects/${id}`, { method: 'DELETE' });
+        await fetch(`/api/content/projects/${id}`, { method: 'DELETE', credentials: 'include' });
         updateState(items.filter(i => i.id !== id));
         router.refresh();
     };
@@ -71,6 +71,7 @@ export default function ProjectManager({ initialData, onUpdate }: { initialData:
         try {
             const res = await fetch('/api/content/projects', {
                 method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newArr),
             });
@@ -87,6 +88,7 @@ export default function ProjectManager({ initialData, onUpdate }: { initialData:
         if (editingItem) {
             await fetch(`/api/content/projects/${editingItem.id}`, {
                 method: 'PUT',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
@@ -94,6 +96,7 @@ export default function ProjectManager({ initialData, onUpdate }: { initialData:
         } else {
             const res = await fetch('/api/content/projects', {
                 method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });

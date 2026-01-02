@@ -27,7 +27,7 @@ export default function SkillsManager({ initialData, onUpdate }: { initialData: 
 
     const handleDelete = async (id: number) => {
         if (!confirm('Delete skill?')) return;
-        await fetch(`/api/content/skills/${id}`, { method: 'DELETE' });
+        await fetch(`/api/content/skills/${id}`, { method: 'DELETE', credentials: 'include' });
         updateState(items.filter(i => i.id !== id));
         router.refresh();
     };
@@ -38,6 +38,7 @@ export default function SkillsManager({ initialData, onUpdate }: { initialData: 
 
         const res = await fetch('/api/content/skills', {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ category, name: skillName })
         });
@@ -90,6 +91,7 @@ export default function SkillsManager({ initialData, onUpdate }: { initialData: 
         try {
             const res = await fetch('/api/content/skills', {
                 method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newItems)
             });
@@ -119,6 +121,7 @@ export default function SkillsManager({ initialData, onUpdate }: { initialData: 
         try {
             const res = await fetch('/api/content/skills', {
                 method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newItems)
             });
@@ -138,11 +141,43 @@ export default function SkillsManager({ initialData, onUpdate }: { initialData: 
         try {
             const res = await fetch('/api/content/skills', {
                 method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newItems)
             });
             if (res.ok) {
                 updateState(newItems);
+                router.refresh();
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const [editingCategory, setEditingCategory] = useState<string | null>(null);
+    const [editCategoryName, setEditCategoryName] = useState('');
+
+    const handleRenameCategory = async (oldName: string) => {
+        const newName = editCategoryName.trim();
+        if (!newName || newName === oldName) {
+            setEditingCategory(null);
+            return;
+        }
+
+        const newItems = items.map(item =>
+            item.category === oldName ? { ...item, category: newName } : item
+        );
+
+        try {
+            const res = await fetch('/api/content/skills', {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newItems)
+            });
+            if (res.ok) {
+                updateState(newItems);
+                setEditingCategory(null);
                 router.refresh();
             }
         } catch (err) {
@@ -186,9 +221,43 @@ export default function SkillsManager({ initialData, onUpdate }: { initialData: 
                 {allCategories.map((category, catIndex) => (
                     <div key={category} className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm flex flex-col h-full">
                         <div className="flex justify-between items-center mb-6 pb-2 border-b">
-                            <div className="flex items-center gap-4">
-                                <h4 className="text-lg font-bold text-indigo-600 uppercase tracking-wider">{category}</h4>
-                                <div className="flex gap-1">
+                            <div className="flex items-center gap-4 flex-grow">
+                                {editingCategory === category ? (
+                                    <div className="flex items-center gap-2">
+                                        <input
+                                            type="text"
+                                            value={editCategoryName}
+                                            onChange={(e) => setEditCategoryName(e.target.value)}
+                                            className="p-1 border rounded text-black font-bold uppercase tracking-wider text-lg"
+                                            autoFocus
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter') handleRenameCategory(category);
+                                                if (e.key === 'Escape') setEditingCategory(null);
+                                            }}
+                                        />
+                                        <button onClick={() => handleRenameCategory(category)} className="text-green-600 p-1">
+                                            <Check size={20} />
+                                        </button>
+                                        <button onClick={() => setEditingCategory(null)} className="text-gray-400 p-1">
+                                            <X size={20} />
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div className="flex items-center gap-2">
+                                        <h4 className="text-lg font-bold text-indigo-600 uppercase tracking-wider">{category}</h4>
+                                        <button
+                                            onClick={() => {
+                                                setEditingCategory(category);
+                                                setEditCategoryName(category);
+                                            }}
+                                            className="p-1 text-gray-400 hover:text-indigo-600 transition-colors"
+                                            title="Rename Category"
+                                        >
+                                            <Edit size={14} />
+                                        </button>
+                                    </div>
+                                )}
+                                <div className="flex gap-1 ml-2">
                                     <button
                                         onClick={() => handleMoveCategory(catIndex, 'up')}
                                         disabled={catIndex === 0}

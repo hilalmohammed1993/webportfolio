@@ -43,6 +43,7 @@ export default function ProfileEditor({ initialData, onUpdate }: { initialData: 
         const newData = { summary, resume_path: resumePath, email, location };
         await fetch('/api/content/profile', {
             method: 'PUT',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newData),
         });

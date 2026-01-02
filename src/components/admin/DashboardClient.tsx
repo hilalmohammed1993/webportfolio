@@ -20,8 +20,22 @@ export default function DashboardClient({ initialData }: { initialData: any }) {
         router.push('/admin/login');
     };
 
-    const handleUpdate = (section: string, newData: any) => {
+    const handleUpdate = async (section: string, newData: any) => {
+        // Update local state immediately for responsive UI
         setData((prev: any) => ({ ...prev, [section]: newData }));
+
+        // Fetch fresh data from server to ensure sync
+        try {
+            const response = await fetch(`/api/content/${section}`);
+            if (response.ok) {
+                const freshData = await response.json();
+                setData((prev: any) => ({ ...prev, [section]: freshData }));
+            }
+        } catch (error) {
+            console.error('Failed to fetch fresh data:', error);
+        }
+
+        // Also trigger a router refresh for server components
         router.refresh();
     };
 
