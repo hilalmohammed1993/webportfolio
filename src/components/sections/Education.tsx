@@ -1,33 +1,48 @@
 'use client';
 
-import { GraduationCap } from 'lucide-react';
+import { GraduationCap, Calendar } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-export default function Education({ education }: { education: any }) {
-    // Basic extraction logic to get individual items from the HTML list
-    const getItems = (htmlContent: string) => {
-        const regex = /<li>(.*?)<\/li>/g;
-        const matches = [];
-        let match;
-        while ((match = regex.exec(htmlContent)) !== null) {
-            matches.push(match[1]);
-        }
-        return matches.length > 0 ? matches : [htmlContent?.replace(/<[^>]*>?/gm, '')].filter(Boolean);
-    };
-
-    const items = getItems(education?.content_html || '');
+export default function Education({ education }: { education: any[] }) {
+    if (!education || !Array.isArray(education)) return null;
 
     return (
-        <div className="space-y-4">
-            <ul className="space-y-4">
-                {items.map((item, index) => (
-                    <li key={index} className="flex items-start gap-4 p-4 bg-blue-50/50 border border-blue-100 rounded-xl transition-all hover:shadow-sm">
-                        <div className="mt-0.5 p-1.5 bg-blue-100 rounded-lg text-blue-600">
-                            <GraduationCap size={18} />
+        <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {education.map((item, index) => (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        key={item.id || index}
+                        className="group relative bg-[#FAFAFA] border border-gray-100 p-6 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300"
+                    >
+                        <div className="flex flex-col h-full">
+                            <div className="flex justify-between items-start mb-4">
+                                <div className="p-2.5 bg-indigo-50 text-indigo-600 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                                    <GraduationCap size={22} />
+                                </div>
+                                <div className="flex items-center gap-1.5 text-[11px] font-bold text-gray-400 uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-gray-100 shadow-sm">
+                                    <Calendar size={12} strokeWidth={2.5} />
+                                    {item.from_date} — {item.to_date}
+                                </div>
+                            </div>
+
+                            <div className="space-y-2 flex-1">
+                                <div
+                                    className="text-lg font-bold text-[#1C1C1C] leading-tight institute-name"
+                                    dangerouslySetInnerHTML={{ __html: item.institute_html }}
+                                />
+                                <div
+                                    className="text-sm font-medium text-indigo-600/80 leading-relaxed degree-info"
+                                    dangerouslySetInnerHTML={{ __html: item.degree_score_html }}
+                                />
+                            </div>
                         </div>
-                        <div className="text-gray-700 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: item }} />
-                    </li>
+                    </motion.div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

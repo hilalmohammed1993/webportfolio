@@ -1,31 +1,33 @@
+'use client';
+
 import { Medal } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-export default function Achievements({ achievements }: { achievements: any }) {
-    // Basic extraction logic
-    const getItems = (htmlContent: string) => {
-        const regex = /<li>(.*?)<\/li>/g;
-        const matches = [];
-        let match;
-        while ((match = regex.exec(htmlContent)) !== null) {
-            matches.push(match[1]);
-        }
-        return matches.length > 0 ? matches : [htmlContent?.replace(/<[^>]*>?/gm, '')].filter(Boolean);
-    };
-
-    const items = getItems(achievements?.content_html || '');
+export default function Achievements({ achievements }: { achievements: any[] }) {
+    if (!achievements || !Array.isArray(achievements)) return null;
 
     return (
-        <div className="space-y-4">
-            <ul className="space-y-4">
-                {items.map((item, index) => (
-                    <li key={index} className="flex items-start gap-4 p-4 bg-yellow-50/50 border border-yellow-100 rounded-xl transition-all hover:shadow-sm">
-                        <div className="mt-0.5 p-1.5 bg-yellow-100 rounded-lg text-yellow-600">
-                            <Medal size={18} />
+        <div className="space-y-4 max-w-3xl">
+            <div className="grid grid-cols-1 gap-4">
+                {achievements.map((item, index) => (
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.05 }}
+                        key={item.id || index}
+                        className="flex items-start gap-5 p-5 bg-white border border-gray-50 rounded-2xl hover:shadow-lg hover:shadow-yellow-500/5 transition-all duration-300 group"
+                    >
+                        <div className="mt-0.5 p-2 bg-yellow-50 text-yellow-600 rounded-xl group-hover:rotate-12 transition-transform duration-300">
+                            <Medal size={22} />
                         </div>
-                        <span className="text-gray-700 font-medium leading-relaxed">{item}</span>
-                    </li>
+                        <div
+                            className="text-[#1C1C1C] font-semibold leading-relaxed achievement-text pt-0.5"
+                            dangerouslySetInnerHTML={{ __html: item.text_html }}
+                        />
+                    </motion.div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

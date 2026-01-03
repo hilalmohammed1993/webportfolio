@@ -32,10 +32,22 @@
       "id": 1767260568864
     }
   ],
-  "education": {
-    "id": 1,
-    "content_html": "<ul><li><strong>Indian&nbsp;Institute&nbsp;of&nbsp;Management&nbsp;(IIM)&nbsp;Visakhapatnam&nbsp;</strong><em>MBA&nbsp;</em>(GPA:&nbsp;3.01/4.00)&nbsp;&nbsp;<strong>2019&nbsp;-&nbsp;2021</strong></li><li><strong>Govt.&nbsp;ModelEngineering&nbsp;College&nbsp;</strong>&nbsp;<em>B.Tech.,&nbsp;Computer&nbsp;Science&nbsp;Engineering&nbsp;</em>(GPA:&nbsp;7.22/10.00)&nbsp;&nbsp;&nbsp;<strong>2012&nbsp;-&nbsp;2016</strong></li><li><strong>Sharjah&nbsp;Indian&nbsp;School&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class&nbsp;XII&nbsp;(2012)&nbsp;–&nbsp;[90%]&nbsp;|&nbsp;Class&nbsp;X&nbsp;(2010)&nbsp;–&nbsp;[9.0/10.0]</li></ul>"
-  },
+  "education": [
+    {
+      "id": 1,
+      "institute_html": "<p>Indian&nbsp;Institute&nbsp;of&nbsp;Management&nbsp;(IIM)&nbsp;Visakhapatnam</p>",
+      "degree_score_html": "<p>MBA&nbsp;(GPA:&nbsp;3.01/4.00)</p>",
+      "from_date": "2019",
+      "to_date": "2021"
+    },
+    {
+      "id": 2,
+      "institute_html": "<p>Govt.&nbsp;Model&nbsp;Engineering&nbsp;College</p>",
+      "degree_score_html": "<p>B.Tech.,&nbsp;Computer&nbsp;Science&nbsp;Engineering&nbsp;(GPA:&nbsp;7.22/10.00)</p>",
+      "from_date": "2012",
+      "to_date": "2016"
+    }
+  ],
   "skills": [
     {
       "category": "Product Management",
@@ -88,27 +100,27 @@
       "id": 1767334160837
     },
     {
-      "category": "Growth & Anaytics",
+      "category": "Growth & Analytics",
       "name": "User Acquisition Funnels",
       "id": 1767334317298
     },
     {
-      "category": "Growth & Anaytics",
+      "category": "Growth & Analytics",
       "name": "Predictive Analytics",
       "id": 1767334326031
     },
     {
-      "category": "Growth & Anaytics",
+      "category": "Growth & Analytics",
       "name": "Intelligence Dashboards",
       "id": 1767334337712
     },
     {
-      "category": "Growth & Anaytics",
+      "category": "Growth & Analytics",
       "name": "Amplitude",
       "id": 1767334346757
     },
     {
-      "category": "Growth & Anaytics",
+      "category": "Growth & Analytics",
       "name": "MixPanel",
       "id": 1767334351021
     },
@@ -233,10 +245,16 @@
       "id": 1767334584973
     }
   ],
-  "achievements": {
-    "id": 1,
-    "content_html": "<ul><li>Awarded Employee of the Year 2021</li><li>Certified Public Accountant (CPA)</li></ul>"
-  },
+  "achievements": [
+    {
+      "id": 1,
+      "text_html": "<p>Awarded&nbsp;Employee&nbsp;of&nbsp;the&nbsp;Year&nbsp;2021</p>"
+    },
+    {
+      "id": 2,
+      "text_html": "<p>Certified&nbsp;Public&nbsp;Accountant&nbsp;(CPA)</p>"
+    }
+  ],
   "projects": [
     {
       "id": 1,

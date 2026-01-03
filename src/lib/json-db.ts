@@ -53,17 +53,53 @@ export const db = {
         writeDB(db);
     },
 
-    getEducation: () => readDB().education,
-    updateEducation: (data: any) => {
+    getEducation: () => readDB().education || [],
+    setEducation: (items: any[]) => {
         const db = readDB();
-        db.education = { ...db.education, ...data };
+        db.education = items;
+        writeDB(db);
+    },
+    addEducation: (item: any) => {
+        const db = readDB();
+        const newItem = { ...item, id: Date.now() };
+        db.education = db.education || [];
+        db.education.push(newItem);
+        writeDB(db);
+        return newItem;
+    },
+    updateEducation: (id: number, data: any) => {
+        const db = readDB();
+        db.education = (db.education || []).map((i: any) => i.id === id ? { ...i, ...data } : i);
+        writeDB(db);
+    },
+    deleteEducation: (id: number) => {
+        const db = readDB();
+        db.education = (db.education || []).filter((i: any) => i.id !== id);
         writeDB(db);
     },
 
-    getAchievements: () => readDB().achievements,
-    updateAchievements: (data: any) => {
+    getAchievements: () => readDB().achievements || [],
+    setAchievements: (items: any[]) => {
         const db = readDB();
-        db.achievements = { ...db.achievements, ...data };
+        db.achievements = items;
+        writeDB(db);
+    },
+    addAchievement: (item: any) => {
+        const db = readDB();
+        const newItem = { ...item, id: Date.now() };
+        db.achievements = db.achievements || [];
+        db.achievements.push(newItem);
+        writeDB(db);
+        return newItem;
+    },
+    updateAchievement: (id: number, data: any) => {
+        const db = readDB();
+        db.achievements = (db.achievements || []).map((i: any) => i.id === id ? { ...i, ...data } : i);
+        writeDB(db);
+    },
+    deleteAchievement: (id: number) => {
+        const db = readDB();
+        db.achievements = (db.achievements || []).filter((i: any) => i.id !== id);
         writeDB(db);
     },
 

@@ -4,26 +4,27 @@ import { getSession } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
-    return NextResponse.json(db.getEducation());
-}
-
-export async function POST(request: Request) {
+export async function PUT(
+    request: Request,
+    { params }: { params: { id: string } }
+) {
     const session = await getSession();
     if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    const item = await request.json();
-    const newItem = db.addEducation(item);
+    const data = await request.json();
+    db.updateAchievement(Number(params.id), data);
 
-    return NextResponse.json(newItem);
+    return NextResponse.json({ success: true });
 }
 
-export async function PUT(request: Request) {
+export async function DELETE(
+    request: Request,
+    { params }: { params: { id: string } }
+) {
     const session = await getSession();
     if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    const items = await request.json();
-    db.setEducation(items);
+    db.deleteAchievement(Number(params.id));
 
     return NextResponse.json({ success: true });
 }

@@ -28,7 +28,7 @@ export default function Hero({ profile }: { profile: any }) {
                     >
                         <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white shadow-lg">
                             <Image
-                                src="/assets/word_cloud.png" // User uses this as their headshot in this context based on 'word art image in the shape of a human' earlier, but let's stick to their uploaded assets if any. For now keeping 'word_cloud.png' as per previous request, or 'profile_pic' if they have one.
+                                src="assets/word_cloud.png"
                                 alt="Profile"
                                 fill
                                 className="object-cover"

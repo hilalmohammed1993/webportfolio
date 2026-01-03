@@ -9,6 +9,8 @@ import ExperienceManager from './editors/ExperienceManager';
 import ProjectManager from './editors/ProjectManager';
 import SkillsManager from './editors/SkillsManager';
 import SocialsManager from './editors/SocialsManager';
+import EducationManager from './editors/EducationManager';
+import AchievementsManager from './editors/AchievementsManager';
 
 export default function DashboardClient({ initialData }: { initialData: any }) {
     const [activeTab, setActiveTab] = useState('profile');
@@ -54,9 +56,9 @@ export default function DashboardClient({ initialData }: { initialData: any }) {
             case 'profile':
                 return <ProfileEditor initialData={data.profile} onUpdate={(d: any) => handleUpdate('profile', d)} />;
             case 'education':
-                return <SingleContentEditor initialData={data.education} endpoint="/api/content/education" onUpdate={(d: any) => handleUpdate('education', d)} />;
+                return <EducationManager initialData={data.education} onUpdate={(d: any) => handleUpdate('education', d)} />;
             case 'achievements':
-                return <SingleContentEditor initialData={data.achievements} endpoint="/api/content/achievements" onUpdate={(d: any) => handleUpdate('achievements', d)} />;
+                return <AchievementsManager initialData={data.achievements} onUpdate={(d: any) => handleUpdate('achievements', d)} />;
             case 'experience':
                 return <ExperienceManager initialData={data.experience} onUpdate={(d: any) => handleUpdate('experience', d)} />;
             case 'projects':
