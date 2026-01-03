@@ -19,15 +19,15 @@
       "id": 2,
       "company": "Indiamart Intermesh Limited",
       "role": "Product Manager",
-      "start_date": "2022-12",
-      "end_date": "2024-08",
+      "start_date": "Dec 2022",
+      "end_date": "Aug 2024",
       "description_html": "<p>At&nbsp;Indiamart,&nbsp;I&nbsp;managed&nbsp;data-driven&nbsp;automation&nbsp;and&nbsp;communication&nbsp;platforms&nbsp;serving&nbsp;over&nbsp;10&nbsp;million&nbsp;SMBs.&nbsp;I&nbsp;launched&nbsp;AI&nbsp;chatbots,&nbsp;real-time&nbsp;dashboards,&nbsp;and&nbsp;hybrid&nbsp;telephony&nbsp;systems&nbsp;that&nbsp;improved&nbsp;conversion&nbsp;rates&nbsp;by&nbsp;15%&nbsp;and&nbsp;cut&nbsp;operational&nbsp;costs&nbsp;by&nbsp;up&nbsp;to&nbsp;90%.</p>"
     },
     {
       "company": "HCL Technologies | Giantview Technologies | QBurst Technologies",
       "role": "Early Career Roles - Engineering & Product",
-      "start_date": "08-2016",
-      "end_date": "12-2022",
+      "start_date": "Aug 2016",
+      "end_date": "Dec 2022",
       "description_html": "<p>In&nbsp;my&nbsp;early&nbsp;career,&nbsp;I&nbsp;worked&nbsp;across&nbsp;software&nbsp;engineering&nbsp;and&nbsp;product&nbsp;roles,&nbsp;developing&nbsp;client-facing&nbsp;web&nbsp;and&nbsp;mobile&nbsp;solutions&nbsp;using&nbsp;PHP,&nbsp;React,&nbsp;and&nbsp;Android.&nbsp;I&nbsp;also&nbsp;contributed&nbsp;to&nbsp;process&nbsp;automation&nbsp;and&nbsp;analytics&nbsp;integrations&nbsp;that&nbsp;improved&nbsp;system&nbsp;performance&nbsp;and&nbsp;reporting&nbsp;accuracy&nbsp;for&nbsp;enterprise&nbsp;clients.</p>",
       "id": 1767260568864
     }
@@ -46,6 +46,13 @@
       "degree_score_html": "<p>B.Tech.,&nbsp;Computer&nbsp;Science&nbsp;Engineering&nbsp;(GPA:&nbsp;7.22/10.00)</p>",
       "from_date": "2012",
       "to_date": "2016"
+    },
+    {
+      "institute_html": "<p><strong>Sharjah&nbsp;Indian&nbsp;School&nbsp;</strong></p>",
+      "degree_score_html": "<p>Class&nbsp;XII&nbsp;(2012)&nbsp;–&nbsp;[90%]&nbsp;|&nbsp;Class&nbsp;X&nbsp;(2010)&nbsp;–&nbsp;[9.0/10.0]</p>",
+      "from_date": "2010",
+      "to_date": "2012",
+      "id": 1767426442598
     }
   ],
   "skills": [

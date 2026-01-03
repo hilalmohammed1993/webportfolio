@@ -7,8 +7,13 @@ export default function Achievements({ achievements }: { achievements: any[] }) 
     if (!achievements || !Array.isArray(achievements)) return null;
 
     return (
-        <div className="space-y-4 max-w-3xl">
-            <div className="grid grid-cols-1 gap-4">
+        <div className="space-y-8">
+            <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4">
+                <div className="w-3.5 h-3.5 bg-indigo-600 rounded-full" />
+                ACHIEVEMENTS & AWARDS
+            </h2>
+
+            <div className="grid grid-cols-1 gap-4 max-w-3xl">
                 {achievements.map((item, index) => (
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}

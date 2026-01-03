@@ -7,8 +7,13 @@ export default function Education({ education }: { education: any[] }) {
     if (!education || !Array.isArray(education)) return null;
 
     return (
-        <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-8">
+            <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4">
+                <div className="w-3.5 h-3.5 bg-indigo-600 rounded-full" />
+                EDUCATION
+            </h2>
+
+            <div className="grid grid-cols-1 gap-6">
                 {education.map((item, index) => (
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -16,7 +21,7 @@ export default function Education({ education }: { education: any[] }) {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
                         key={item.id || index}
-                        className="group relative bg-[#FAFAFA] border border-gray-100 p-6 rounded-2xl hover:bg-white hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300"
+                        className="group relative bg-[#FAFAFA] border border-gray-100 p-8 rounded-[24px] hover:bg-white hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 w-full"
                     >
                         <div className="flex flex-col h-full">
                             <div className="flex justify-between items-start mb-4">
