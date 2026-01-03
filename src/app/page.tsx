@@ -22,16 +22,16 @@ export default function Home() {
   const socials = db.getSocials();
 
   return (
-    <main className="bg-[#F4F4F4] min-h-screen pb-20 text-gray-900">
+    <main className="bg-[#FAFAFA] min-h-screen pb-20 text-gray-900">
       <Navbar resumePath={profile.resume_path} />
 
       {/* Container */}
-      <div className="container mx-auto px-6 py-8 space-y-16">
+      <div className="container mx-auto px-6 py-8 space-y-32">
         {/* Row 1: Hero */}
         <Hero profile={profile} />
 
         {/* Row 2: Experience & Projects */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
           <div id="experience" className="scroll-mt-24">
             <Experience experience={experience} />
           </div>
@@ -41,8 +41,8 @@ export default function Home() {
         </div>
 
         {/* Row 3: Achievements+Education & Skills */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+          <div className="space-y-32">
             <div id="achievements">
               <Achievements achievements={achievements} />
             </div>

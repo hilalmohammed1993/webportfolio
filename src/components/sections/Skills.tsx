@@ -94,7 +94,7 @@ export default function Skills({ skills }: { skills: any[] }) {
     };
 
     return (
-        <section className="w-full space-y-12">
+        <section className="w-full mt-[100px] mb-12 space-y-12">
             {/* Unified Heading */}
             <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4 uppercase">
                 SKILLS & TOOLS
@@ -134,11 +134,11 @@ export default function Skills({ skills }: { skills: any[] }) {
                     <div
                         ref={scrollRef}
                         onScroll={checkScroll}
-                        className="flex overflow-x-auto gap-8 pb-4 no-scrollbar scroll-smooth"
+                        className="flex overflow-x-auto gap-[30px] pb-4 no-scrollbar scroll-smooth"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
                         {categoryColumns.map((column, colIdx) => (
-                            <div key={colIdx} className="flex flex-col gap-8 flex-shrink-0">
+                            <div key={colIdx} className="flex flex-col gap-[30px] flex-shrink-0">
                                 {column.map((category) => {
                                     const config = CATEGORY_CONFIG[category] || DEFAULT_CONFIG;
                                     const Icon = config.icon;
@@ -150,7 +150,7 @@ export default function Skills({ skills }: { skills: any[] }) {
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
                                             onClick={() => handleCategoryClick(category)}
-                                            className={`flex items-center gap-5 px-6 py-6 rounded-[24px] transition-all duration-300 w-[380px] md:w-[420px] text-left h-[100px] border border-transparent ${isActive
+                                            className={`flex items-center gap-5 px-7 py-7 rounded-[24px] transition-all duration-300 w-[380px] md:w-[420px] text-left h-[110px] border border-transparent ${isActive
                                                 ? 'shadow-[0_8px_24px_rgba(0,0,0,0.08)]'
                                                 : 'bg-white shadow-sm hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)]'
                                                 }`}

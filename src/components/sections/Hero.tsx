@@ -38,11 +38,11 @@ export default function Hero({ profile }: { profile: any }) {
                     </motion.div>
 
                     {/* Right Side: Text Content */}
-                    <div className="flex-grow text-center md:text-left pt-4">
+                    <div className="flex-grow w-full md:w-auto text-center md:text-left pt-4 overflow-hidden">
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="prose prose-lg prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-[#007AFF] max-w-none"
+                            className="prose prose-lg prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-[#007AFF] max-w-full overflow-hidden break-words"
                             dangerouslySetInnerHTML={{ __html: profile?.summary || '<h1>Product Manager</h1><p>Welcome to my portfolio.</p>' }}
                         />
 

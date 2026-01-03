@@ -12,21 +12,21 @@ export default function Achievements({ achievements }: { achievements: any[] }) 
                 ACHIEVEMENTS & AWARDS
             </h2>
 
-            <div className="grid grid-cols-1 gap-4 max-w-3xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {achievements.map((item, index) => (
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.05 }}
                         key={item.id || index}
-                        className="flex items-start gap-5 p-5 bg-white border border-gray-50 rounded-2xl hover:shadow-lg hover:shadow-yellow-500/5 transition-all duration-300 group"
+                        className="flex items-center gap-4 p-4 bg-[#F0F7FF] border border-blue-100/50 rounded-xl hover:shadow-md transition-all duration-300 group"
                     >
-                        <div className="mt-0.5 p-2 bg-yellow-50 text-yellow-600 rounded-xl group-hover:rotate-12 transition-transform duration-300">
-                            <Medal size={22} />
+                        <div className="shrink-0 p-2.5 bg-white text-blue-600 rounded-lg shadow-sm group-hover:scale-110 transition-transform duration-300">
+                            <Medal size={20} />
                         </div>
                         <div
-                            className="text-[#1C1C1C] font-semibold leading-relaxed achievement-text pt-0.5"
+                            className="text-[#1C1C1C] font-bold text-[14px] leading-tight achievement-text"
                             dangerouslySetInnerHTML={{ __html: item.text_html }}
                         />
                     </motion.div>
