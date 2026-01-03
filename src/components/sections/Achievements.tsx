@@ -8,7 +8,7 @@ export default function Achievements({ achievements }: { achievements: any[] }) 
 
     return (
         <div className="space-y-8">
-            <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4 uppercase">
+            <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4 uppercase" style={{ marginBottom: '32px' }}>
                 ACHIEVEMENTS & AWARDS
             </h2>
 

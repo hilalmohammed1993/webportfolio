@@ -96,12 +96,71 @@ export default function Skills({ skills }: { skills: any[] }) {
     return (
         <section className="w-full mt-[100px] mb-12 space-y-12">
             {/* Unified Heading */}
-            <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4 uppercase">
+            <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4 uppercase" style={{ marginBottom: '32px' }}>
                 SKILLS & TOOLS
             </h2>
 
-            <div className="bg-white rounded-[32px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] p-8 md:p-12 relative border border-gray-50 overflow-hidden">
-                <div className="relative group/carousel">
+            <div className="bg-white rounded-[32px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-50 relative overflow-visible" style={{ padding: '48px 64px' }}>
+                {/* Popup DIRECTLY on top of carousel */}
+                <AnimatePresence mode="wait">
+                    {selectedCategory && (
+                        <motion.div
+                            key={selectedCategory}
+                            initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                            transition={{ duration: 0.2, ease: "easeOut" }}
+                            className="absolute left-0 right-0 bg-white rounded-[24px] shadow-[0_20px_80px_rgba(0,0,0,0.25)] border-2 border-indigo-100 z-50"
+                            style={{ bottom: '100%', marginBottom: '16px' }}
+                        >
+                            <div style={{ padding: '32px' }}>
+                                <div className="flex justify-between items-center" style={{ marginBottom: '24px' }}>
+                                    <div className="flex items-center gap-4">
+                                        <div
+                                            className="w-12 h-12 rounded-xl flex items-center justify-center shadow-sm"
+                                            style={{
+                                                backgroundColor: getRgba(CATEGORY_CONFIG[selectedCategory]?.color || DEFAULT_CONFIG.color, 0.1),
+                                                color: CATEGORY_CONFIG[selectedCategory]?.color || DEFAULT_CONFIG.color
+                                            }}
+                                        >
+                                            {React.createElement(CATEGORY_CONFIG[selectedCategory]?.icon || DEFAULT_CONFIG.icon, { size: 24, strokeWidth: 2.5 })}
+                                        </div>
+                                        <h3
+                                            className="text-2xl font-bold"
+                                            style={{ color: CATEGORY_CONFIG[selectedCategory]?.color || DEFAULT_CONFIG.color }}
+                                        >
+                                            {selectedCategory}
+                                        </h3>
+                                    </div>
+                                    <button
+                                        onClick={() => setSelectedCategory(null)}
+                                        className="p-2 hover:bg-gray-50 rounded-full transition-colors text-gray-400 hover:text-gray-600"
+                                    >
+                                        <X size={24} />
+                                    </button>
+                                </div>
+
+                                <div className="flex flex-wrap bg-gray-50 rounded-lg" style={{ gap: '12px', padding: '16px' }}>
+                                    {groupedSkills[selectedCategory].map((skill: any, idx: number) => (
+                                        <motion.div
+                                            key={skill.id}
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ delay: idx * 0.02 }}
+                                            className="bg-white text-gray-700 rounded-full text-sm font-semibold hover:bg-gray-100 transition-all cursor-default border border-gray-200 shadow-sm"
+                                            style={{ padding: '10px 20px' }}
+                                        >
+                                            {skill.name}
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* Carousel with visible padding */}
+                <div className="bg-gray-50/30 rounded-2xl relative group/carousel" style={{ padding: '12px' }}>
                     {/* Navigation Arrows */}
                     <AnimatePresence>
                         {canScrollLeft && (
@@ -152,10 +211,10 @@ export default function Skills({ skills }: { skills: any[] }) {
                                             onClick={() => handleCategoryClick(category)}
                                             className={`flex items-center gap-5 px-7 py-7 rounded-[24px] transition-all duration-300 w-[380px] md:w-[420px] text-left h-[110px] border border-transparent ${isActive
                                                 ? 'shadow-[0_8px_24px_rgba(0,0,0,0.08)]'
-                                                : 'bg-white shadow-sm hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)]'
+                                                : 'bg-[#F5F5F5] shadow-sm hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)]'
                                                 }`}
                                             style={{
-                                                backgroundColor: isActive ? getRgba(config.color, 0.12) : '#FFFFFF'
+                                                backgroundColor: isActive ? getRgba(config.color, 0.12) : '#F5F5F5'
                                             }}
                                         >
                                             <div
@@ -183,66 +242,10 @@ export default function Skills({ skills }: { skills: any[] }) {
                                 })}
                             </div>
                         ))}
-                        {/* Peek spacer to ensure the last column peeks if there are more */}
+                        {/* Peek spacer */}
                         <div className="flex-shrink-0 w-20" />
                     </div>
                 </div>
-
-                {/* Sliding Detail Panel */}
-                <AnimatePresence mode="wait">
-                    {selectedCategory && (
-                        <motion.div
-                            key={selectedCategory}
-                            initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                            animate={{ height: 'auto', opacity: 1, marginTop: 40 }}
-                            exit={{ height: 0, opacity: 0, marginTop: 0 }}
-                            transition={{ duration: 0.3, ease: "easeInOut" }}
-                            className="bg-[#FFFFFF] rounded-[24px] shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-gray-50 overflow-hidden"
-                        >
-                            <div className="p-10 lg:p-12">
-                                <div className="flex justify-between items-center mb-10">
-                                    <div className="flex items-center gap-5">
-                                        <div
-                                            className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm"
-                                            style={{
-                                                backgroundColor: getRgba(CATEGORY_CONFIG[selectedCategory]?.color || DEFAULT_CONFIG.color, 0.1),
-                                                color: CATEGORY_CONFIG[selectedCategory]?.color || DEFAULT_CONFIG.color
-                                            }}
-                                        >
-                                            {React.createElement(CATEGORY_CONFIG[selectedCategory]?.icon || DEFAULT_CONFIG.icon, { size: 28, strokeWidth: 2.5 })}
-                                        </div>
-                                        <h3
-                                            className="text-3xl font-bold"
-                                            style={{ color: CATEGORY_CONFIG[selectedCategory]?.color || DEFAULT_CONFIG.color }}
-                                        >
-                                            {selectedCategory}
-                                        </h3>
-                                    </div>
-                                    <button
-                                        onClick={() => setSelectedCategory(null)}
-                                        className="p-3 hover:bg-gray-50 rounded-full transition-colors text-gray-400 hover:text-gray-600"
-                                    >
-                                        <X size={28} />
-                                    </button>
-                                </div>
-
-                                <div className="flex flex-wrap gap-x-4 gap-y-5">
-                                    {groupedSkills[selectedCategory].map((skill: any, idx: number) => (
-                                        <motion.div
-                                            key={skill.id}
-                                            initial={{ opacity: 0, scale: 0.95 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ delay: idx * 0.02 }}
-                                            className="px-6 py-3 bg-[#EEEEEE] text-[#4A4A4A] rounded-full text-sm font-semibold hover:bg-gray-200 transition-all cursor-default border border-transparent shadow-sm"
-                                        >
-                                            {skill.name}
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
             </div>
         </section>
     );

@@ -26,12 +26,14 @@ export default function Home() {
       <Navbar resumePath={profile.resume_path} />
 
       {/* Container */}
-      <div className="container mx-auto px-6 py-8 space-y-32">
+      <div className="container mx-auto px-6" style={{ paddingTop: '32px', paddingBottom: '80px' }}>
         {/* Row 1: Hero */}
-        <Hero profile={profile} />
+        <div style={{ marginBottom: '64px' }}>
+          <Hero profile={profile} />
+        </div>
 
         {/* Row 2: Experience & Projects */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: '96px', marginBottom: '64px' }}>
           <div id="experience" className="scroll-mt-24">
             <Experience experience={experience} />
           </div>
@@ -41,8 +43,8 @@ export default function Home() {
         </div>
 
         {/* Row 3: Achievements+Education & Skills */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
-          <div className="space-y-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: '96px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
             <div id="achievements">
               <Achievements achievements={achievements} />
             </div>
