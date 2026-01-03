@@ -13,10 +13,10 @@ export default function Hero({ profile }: { profile: any }) {
     }, []);
 
     return (
-        <section id="about" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <section id="about" className="min-h-[50vh] flex items-center pt-12 pb-12 relative overflow-hidden">
             {/* Background Glow */}
             {/* Container */}
-            <div className="container mx-auto px-6 py-12 md:py-20">
+            <div className="container mx-auto px-6 py-6 md:py-10">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-12">
 
                     {/* Left Side: Circular Headshot */}

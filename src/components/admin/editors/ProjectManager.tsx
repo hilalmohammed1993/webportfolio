@@ -15,6 +15,7 @@ export default function ProjectManager({ initialData, onUpdate }: { initialData:
         title: '',
         description: '',
         link: '',
+        link_text: 'View on Github',
         image_url: ''
     });
 
@@ -24,7 +25,7 @@ export default function ProjectManager({ initialData, onUpdate }: { initialData:
     };
 
     const resetForm = () => {
-        setFormData({ title: '', description: '', link: '', image_url: '' });
+        setFormData({ title: '', description: '', link: '', link_text: 'View on Github', image_url: '' });
         setEditingItem(null);
         setIsCreating(false);
     };
@@ -125,13 +126,25 @@ export default function ProjectManager({ initialData, onUpdate }: { initialData:
                             onChange={e => setFormData({ ...formData, title: e.target.value })}
                         />
                     </div>
-                    <div>
-                        <label className="block text-gray-400 mb-1">Link</label>
-                        <input
-                            className="w-full bg-black/20 border border-white/10 rounded p-2 text-white"
-                            value={formData.link}
-                            onChange={e => setFormData({ ...formData, link: e.target.value })}
-                        />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label className="block text-gray-400 mb-1">Link URL</label>
+                            <input
+                                className="w-full bg-black/20 border border-white/10 rounded p-2 text-white"
+                                value={formData.link}
+                                onChange={e => setFormData({ ...formData, link: e.target.value })}
+                                placeholder="https://..."
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-gray-400 mb-1">Link Button Text</label>
+                            <input
+                                className="w-full bg-black/20 border border-white/10 rounded p-2 text-white"
+                                value={formData.link_text}
+                                onChange={e => setFormData({ ...formData, link_text: e.target.value })}
+                                placeholder="e.g. View on Github"
+                            />
+                        </div>
                     </div>
                     <div>
                         <label className="block text-gray-400 mb-1">Image Upload</label>

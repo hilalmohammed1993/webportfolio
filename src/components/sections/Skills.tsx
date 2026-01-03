@@ -96,8 +96,7 @@ export default function Skills({ skills }: { skills: any[] }) {
     return (
         <section className="w-full space-y-12">
             {/* Unified Heading */}
-            <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4">
-                <div className="w-3.5 h-3.5 bg-indigo-600 rounded-full" />
+            <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4 uppercase">
                 SKILLS & TOOLS
             </h2>
 
@@ -152,8 +151,8 @@ export default function Skills({ skills }: { skills: any[] }) {
                                             whileTap={{ scale: 0.98 }}
                                             onClick={() => handleCategoryClick(category)}
                                             className={`flex items-center gap-5 px-6 py-6 rounded-[24px] transition-all duration-300 w-[380px] md:w-[420px] text-left h-[100px] border border-transparent ${isActive
-                                                    ? 'shadow-[0_8px_24px_rgba(0,0,0,0.08)]'
-                                                    : 'bg-white shadow-sm hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)]'
+                                                ? 'shadow-[0_8px_24px_rgba(0,0,0,0.08)]'
+                                                : 'bg-white shadow-sm hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)]'
                                                 }`}
                                             style={{
                                                 backgroundColor: isActive ? getRgba(config.color, 0.12) : '#FFFFFF'

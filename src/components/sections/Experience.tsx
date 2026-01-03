@@ -5,8 +5,7 @@ import { motion } from 'framer-motion';
 export default function Experience({ experience }: { experience: any[] }) {
     return (
         <div className="space-y-8">
-            <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4">
-                <div className="w-3.5 h-3.5 bg-indigo-600 rounded-full" />
+            <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4 uppercase">
                 PROFESSIONAL EXPERIENCE
             </h2>
 
