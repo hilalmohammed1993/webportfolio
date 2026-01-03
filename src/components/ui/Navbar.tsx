@@ -12,7 +12,8 @@ export default function Navbar({ resumePath }: { resumePath?: string }) {
     const links = [
         { name: 'HOME', href: '#' },
         { name: 'EXPERIENCE', href: '#experience' },
-        { name: 'PROJECTS', href: '#projects' }, // Keeping Projects as per user's "Mockup Match" request implies sticking to mockup, but user comment said "HOME, EXPERIENCE, EDUCATION". I will follow user COMMENT.
+        { name: 'PROJECTS', href: '#projects' },
+        { name: 'SKILLS', href: '#skills' },
         { name: 'EDUCATION', href: '#education' },
     ];
 
@@ -45,7 +46,22 @@ export default function Navbar({ resumePath }: { resumePath?: string }) {
                 <a
                     href={resumePath?.startsWith('/') ? resumePath.slice(1) : (resumePath || 'resume.pdf')}
                     download="Hilal_Mohammed_Resume.pdf"
-                    className="hidden md:flex items-center justify-center px-8 py-3 bg-[#5B8CB9] text-white text-[13px] font-bold rounded-lg hover:bg-[#4A7CA9] transition-all shadow-sm active:scale-95"
+                    className="hidden md:flex items-center justify-center transition-all hover:opacity-90 active:scale-95"
+                    style={{
+                        backgroundColor: '#5B8CB9',
+                        color: 'white',
+                        width: '160px',
+                        height: '32px',
+                        borderRadius: '8px',
+                        fontSize: '13px',
+                        fontWeight: '600',
+                        textDecoration: 'none',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        whiteSpace: 'nowrap'
+                    }}
                 >
                     Download Resume
                 </a>

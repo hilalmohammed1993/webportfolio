@@ -56,10 +56,24 @@ export default function Projects({ projects }: { projects: any[] }) {
                                         href={project.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center px-10 h-14 bg-[#5B8CB9] text-white text-[14px] font-bold rounded-xl hover:bg-[#4A7CA9] transition-all hover:shadow-lg hover:shadow-indigo-500/10 active:scale-95 gap-2 min-w-[180px]"
+                                        className="inline-flex items-center justify-center transition-all hover:opacity-90 active:scale-95"
+                                        style={{
+                                            backgroundColor: '#5B8CB9',
+                                            color: 'white',
+                                            width: '160px',
+                                            height: '32px',
+                                            borderRadius: '8px',
+                                            fontSize: '13px',
+                                            fontWeight: '600',
+                                            textDecoration: 'none',
+                                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            whiteSpace: 'nowrap'
+                                        }}
                                     >
                                         {project.link_text || 'View Project'}
-                                        <ExternalLink size={16} />
                                     </a>
                                 </div>
                             )}
