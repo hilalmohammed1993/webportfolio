@@ -30,13 +30,13 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Invalid destination' }, { status: 400 });
         }
         uploadPath = path.join(process.cwd(), 'public', destination);
-        publicPath = destination.startsWith('assets') ? `/${destination}` : `/${destination}`;
+        publicPath = destination;
     } else {
         const filename = Date.now() + '-' + file.name.replace(/[^a-zA-Z0-9.-]/g, '-');
         const uploadDir = path.join(process.cwd(), 'public', 'uploads');
         await mkdir(uploadDir, { recursive: true });
         uploadPath = path.join(uploadDir, filename);
-        publicPath = `/uploads/${filename}`;
+        publicPath = `uploads/${filename}`;
     }
 
     try {

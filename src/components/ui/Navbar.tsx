@@ -43,7 +43,7 @@ export default function Navbar({ resumePath }: { resumePath?: string }) {
 
                 {/* Right: CTA */}
                 <a
-                    href={resumePath || '/resume.pdf'}
+                    href={resumePath?.startsWith('/') ? resumePath.slice(1) : (resumePath || 'resume.pdf')}
                     download="Hilal_Mohammed_Resume.pdf"
                     className="hidden md:block px-6 py-2 bg-[#5B8CB9] text-white text-[13px] font-bold rounded-lg hover:bg-[#4A7CA9] transition-colors shadow-sm h-11 flex items-center"
                 >
