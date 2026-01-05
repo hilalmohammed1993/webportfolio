@@ -41,7 +41,10 @@ export default function Projects({ projects }: { projects: any[] }) {
                         </div>
 
                         {/* Content */}
-                        <div className="p-8 flex flex-col flex-grow text-left">
+                        <div
+                            className="flex flex-col flex-grow text-left"
+                            style={{ padding: '20px' }}
+                        >
                             <h3 className="text-2xl font-bold text-[#1C1C1C] mb-3 group-hover:text-indigo-600 transition-colors">
                                 {project.title}
                             </h3>

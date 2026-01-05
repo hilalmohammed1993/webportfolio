@@ -42,8 +42,13 @@ export default function Hero({ profile }: { profile: any }) {
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="prose prose-lg prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-[#007AFF] max-w-full overflow-hidden break-words"
-                            dangerouslySetInnerHTML={{ __html: profile?.summary || '<h1>Product Manager</h1><p>Welcome to my portfolio.</p>' }}
+                            className="prose prose-lg prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-[#007AFF] max-w-full overflow-hidden"
+                            style={{
+                                wordBreak: 'keep-all',
+                                overflowWrap: 'normal',
+                                hyphens: 'none'
+                            }}
+                            dangerouslySetInnerHTML={{ __html: (profile?.summary || '<h1>Product Manager</h1><p>Welcome to my portfolio.</p>').replace(/&nbsp;/g, ' ') }}
                         />
 
                         {/* Social Icons */}

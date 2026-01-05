@@ -20,14 +20,21 @@ export default function Achievements({ achievements }: { achievements: any[] }) 
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.05 }}
                         key={item.id || index}
-                        className="flex items-center gap-4 p-4 bg-[#F0F7FF] border border-blue-100/50 rounded-xl hover:shadow-md transition-all duration-300 group"
+                        className="flex items-center gap-4 px-4 bg-[#F0F7FF] border border-blue-100/50 rounded-xl hover:shadow-md transition-all duration-300 group overflow-visible"
+                        style={{ minHeight: '64px', padding: '12px 16px' }}
                     >
-                        <div className="shrink-0 p-2.5 bg-white text-blue-600 rounded-lg shadow-sm group-hover:scale-110 transition-transform duration-300">
-                            <Medal size={20} />
+                        <div className="shrink-0 p-2 bg-white text-blue-600 rounded-lg shadow-sm group-hover:scale-110 transition-transform duration-300">
+                            <Medal size={18} />
                         </div>
                         <div
-                            className="text-[#1C1C1C] font-bold text-[14px] leading-tight achievement-text"
-                            dangerouslySetInnerHTML={{ __html: item.text_html }}
+                            className="text-[#1C1C1C] font-bold text-[14px] leading-[1.2]"
+                            style={{
+                                wordBreak: 'keep-all',
+                                overflowWrap: 'normal',
+                                hyphens: 'none',
+                                flex: 1
+                            }}
+                            dangerouslySetInnerHTML={{ __html: item.text_html.replace(/&nbsp;/g, ' ') }}
                         />
                     </motion.div>
                 ))}

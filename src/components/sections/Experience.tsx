@@ -63,8 +63,13 @@ export default function Experience({ experience }: { experience: any[] }) {
 
                                         {/* Description */}
                                         <div
-                                            className="text-gray-600 text-[14px] leading-relaxed break-words prose prose-sm max-w-none prose-p:my-2 prose-ul:my-2 prose-li:my-1 prose-strong:text-gray-900"
-                                            dangerouslySetInnerHTML={{ __html: item.description_html }}
+                                            className="text-gray-600 text-[14px] leading-relaxed prose prose-sm max-w-none prose-p:my-2 prose-ul:my-2 prose-li:my-1 prose-strong:text-gray-900"
+                                            style={{
+                                                wordBreak: 'keep-all',
+                                                overflowWrap: 'normal',
+                                                hyphens: 'none'
+                                            }}
+                                            dangerouslySetInnerHTML={{ __html: item.description_html.replace(/&nbsp;/g, ' ') }}
                                         />
                                     </div>
                                 </div>

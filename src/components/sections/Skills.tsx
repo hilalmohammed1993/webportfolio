@@ -100,7 +100,7 @@ export default function Skills({ skills }: { skills: any[] }) {
                 SKILLS & TOOLS
             </h2>
 
-            <div className="bg-white rounded-[32px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-50 relative overflow-visible" style={{ padding: '48px 64px' }}>
+            <div className="bg-white rounded-[32px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-50 relative overflow-visible" style={{ padding: '24px 32px' }}>
                 {/* Popup DIRECTLY on top of carousel */}
                 <AnimatePresence mode="wait">
                     {selectedCategory && (
@@ -214,7 +214,8 @@ export default function Skills({ skills }: { skills: any[] }) {
                                                 : 'bg-[#F5F5F5] shadow-sm hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)]'
                                                 }`}
                                             style={{
-                                                backgroundColor: isActive ? getRgba(config.color, 0.12) : '#F5F5F5'
+                                                backgroundColor: isActive ? getRgba(config.color, 0.12) : '#F5F5F5',
+                                                paddingLeft: '32px'
                                             }}
                                         >
                                             <div

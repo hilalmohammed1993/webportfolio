@@ -46,11 +46,13 @@ export default function Education({ education }: { education: any[] }) {
                                             <div className="space-y-1 flex-1 text-left">
                                                 <div
                                                     className="text-[18px] font-bold text-[#1C1C1C] leading-snug group-hover:text-indigo-600 transition-colors"
-                                                    dangerouslySetInnerHTML={{ __html: item.institute_html }}
+                                                    style={{ wordBreak: 'keep-all', hyphens: 'none' }}
+                                                    dangerouslySetInnerHTML={{ __html: item.institute_html.replace(/&nbsp;/g, ' ') }}
                                                 />
                                                 <div
                                                     className="text-[14px] text-gray-600 font-normal leading-relaxed"
-                                                    dangerouslySetInnerHTML={{ __html: item.degree_score_html }}
+                                                    style={{ wordBreak: 'keep-all', hyphens: 'none' }}
+                                                    dangerouslySetInnerHTML={{ __html: item.degree_score_html.replace(/&nbsp;/g, ' ') }}
                                                 />
                                             </div>
                                             <div className="shrink-0 flex flex-col items-start md:items-end gap-2">
