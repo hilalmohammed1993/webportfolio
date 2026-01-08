@@ -276,17 +276,25 @@
   ],
   "projects": [
     {
-      "title": "LawBot",
-      "description": "An AI-enabled chatbot to help with all legal queries for users.",
-      "link": "",
+      "title": "Job Leads Scraper",
+      "description": "Google Chrome extension designed to streamline lead generation by scraping LinkedIn profile data.",
+      "link": "https://github.com/hilalmohammed1993/jobleadsscraper",
       "link_text": "View on Github",
-      "image_url": "uploads/1767436336717-LawBot.jpg",
+      "image_url": "uploads/1767891546343-linkedin-scraping.svg",
+      "id": 1767891551712
+    },
+    {
+      "title": "Humanize AI",
+      "description": "Tool designed to refine AI-generated content into natural, human-like writing",
+      "link": "https://hilalmohammed1993.github.io/humanize-ai/",
+      "link_text": "View Website",
+      "image_url": "uploads/1767891284818-humanize-ai.png",
       "id": 1767436405567
     },
     {
       "id": 1,
       "title": "Crypto Analysis",
-      "description": "A Crypto Analysis application to help users make crucial day-to-day decisions based on cryptocurrency trading or investment.",
+      "description": "Cryptocurrency analysis tool that provides real-time market insights and sentiment analysis from global news sources.",
       "link": "https://github.com/hilalmohammed1993",
       "link_text": "View on Github",
       "image_url": "uploads/1767436429447-5-Basics-of-Cryptocurrency-Technical-Analysis-new.png"
