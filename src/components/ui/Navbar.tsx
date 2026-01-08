@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import { trackEvent } from '@/lib/analytics';
 
 export default function Navbar({ resumePath }: { resumePath?: string }) {
     const pathname = usePathname();
@@ -16,6 +17,14 @@ export default function Navbar({ resumePath }: { resumePath?: string }) {
         { name: 'SKILLS', href: '#skills' },
         { name: 'EDUCATION', href: '#education' },
     ];
+
+    const handleResumeDownload = () => {
+        trackEvent('resume_download', {
+            resume_url: resumePath,
+            location: 'navbar',
+            timestamp: new Date().toISOString()
+        });
+    };
 
     return (
         <motion.nav
@@ -46,6 +55,7 @@ export default function Navbar({ resumePath }: { resumePath?: string }) {
                 <a
                     href={resumePath?.startsWith('/') ? resumePath.slice(1) : (resumePath || 'resume.pdf')}
                     download="Hilal_Mohammed_Resume.pdf"
+                    onClick={handleResumeDownload}
                     className="hidden md:flex items-center justify-center transition-all hover:opacity-90 active:scale-95"
                     style={{
                         backgroundColor: '#5B8CB9',

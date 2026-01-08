@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Linkedin, Github, Mail } from 'lucide-react';
 import Image from 'next/image';
+import { trackEvent } from '@/lib/analytics';
 
 export default function Hero({ profile }: { profile: any }) {
     const [cacheBuster, setCacheBuster] = React.useState('');
@@ -11,6 +12,15 @@ export default function Hero({ profile }: { profile: any }) {
     React.useEffect(() => {
         setCacheBuster(`?v=${Date.now()}`);
     }, []);
+
+    const handleSocialClick = (platform: string, url: string) => {
+        trackEvent('social_click', {
+            platform,
+            url,
+            location: 'hero',
+            timestamp: new Date().toISOString()
+        });
+    };
 
     return (
         <section id="about" className="min-h-[50vh] flex items-center pt-12 pb-12 relative overflow-hidden">
@@ -62,6 +72,7 @@ export default function Hero({ profile }: { profile: any }) {
                                 href="https://linkedin.com/in/hilalmohammed1993"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => handleSocialClick('linkedin', 'https://linkedin.com/in/hilalmohammed1993')}
                                 className="w-11 h-11 flex items-center justify-center border border-gray-200 rounded-full text-gray-400 hover:text-[#0077B5] hover:border-[#0077B5] hover:bg-blue-50 transition-all"
                             >
                                 <Linkedin size={20} />
@@ -70,6 +81,7 @@ export default function Hero({ profile }: { profile: any }) {
                                 href="https://github.com/hilalmohammed1993"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => handleSocialClick('github', 'https://github.com/hilalmohammed1993')}
                                 className="w-11 h-11 flex items-center justify-center border border-gray-200 rounded-full text-gray-400 hover:text-gray-900 hover:border-gray-900 hover:bg-gray-50 transition-all"
                             >
                                 <Github size={20} />
@@ -77,6 +89,7 @@ export default function Hero({ profile }: { profile: any }) {
                             {profile?.email && (
                                 <a
                                     href={`mailto:${profile.email}`}
+                                    onClick={() => handleSocialClick('email', `mailto:${profile.email}`)}
                                     className="w-11 h-11 flex items-center justify-center border border-gray-200 rounded-full text-gray-400 hover:text-red-500 hover:border-red-500 hover:bg-red-50 transition-all"
                                 >
                                     <Mail size={20} />
