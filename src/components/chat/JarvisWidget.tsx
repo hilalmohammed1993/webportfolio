@@ -66,7 +66,7 @@ export default function JarvisWidget() {
             if (data.error) {
                 setMessages((prev) => [
                     ...prev,
-                    { role: "jarvis", content: "I apologize, but I am having trouble connecting to my core processing units. Please ensure the API key is configured correctly." },
+                    { role: "jarvis", content: `I apologize, but I am facing a system error: **${data.error}**` },
                 ]);
             } else {
                 setMessages((prev) => [...prev, { role: "jarvis", content: data.content }]);

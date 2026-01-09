@@ -3,23 +3,31 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from "fs";
 import path from "path";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
 export async function POST(req: NextRequest) {
     try {
         const { messages } = await req.json();
+        const apiKey = process.env.GEMINI_API_KEY;
 
-        if (!process.env.GEMINI_API_KEY) {
+        if (!apiKey || apiKey === "your_actual_key_here") {
             return NextResponse.json(
-                { error: "Gemini API Key is not configured." },
+                { error: "GEMINI_API_KEY is missing or contains the placeholder. Please check your Vercel Environment Variables." },
                 { status: 500 }
             );
         }
 
+        const genAI = new GoogleGenerativeAI(apiKey);
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
         // Load Knowledge Base
         const resumePath = path.join(process.cwd(), "src/data/master_resume.txt");
         const portfolioPath = path.join(process.cwd(), "src/data/portfolio.json");
+
+        if (!fs.existsSync(resumePath)) {
+            return NextResponse.json({ error: `Knowledge base file missing: ${resumePath}` }, { status: 500 });
+        }
+        if (!fs.existsSync(portfolioPath)) {
+            return NextResponse.json({ error: `Knowledge base file missing: ${portfolioPath}` }, { status: 500 });
+        }
 
         const resumeContent = fs.readFileSync(resumePath, "utf-8");
         const portfolioContent = fs.readFileSync(portfolioPath, "utf-8");
