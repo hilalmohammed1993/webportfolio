@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
         }
 
         const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
         // Load Knowledge Base
         const resumePath = path.join(process.cwd(), "src/data/master_resume.txt");
@@ -84,8 +84,15 @@ Jarvis:`;
         return NextResponse.json({ content: text });
     } catch (error: any) {
         console.error("Chat API Error:", error);
+        let errorMessage = error.message || 'Unknown error';
+
+        // Specific help for 404 model errors
+        if (errorMessage.includes("404") || errorMessage.includes("not found")) {
+            errorMessage = "Jarvis is having trouble finding the AI model. This can happen if the API key is restricted or if the region is not supported. Try using a different API key or check your Google AI Studio settings.";
+        }
+
         return NextResponse.json(
-            { error: `Internal Server Error: ${error.message || 'Unknown error'}` },
+            { error: `Internal Server Error: ${errorMessage}` },
             { status: 500 }
         );
     }
