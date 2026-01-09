@@ -12,7 +12,11 @@ const nextConfig: NextConfig = {
       config.resolve.fallback = { fs: false };
     }
     return config;
-  }
+  },
+  // Setting an empty turbopack config to silence the conflict error
+  // while keeping the custom webpack config for client-side polyfills.
+  // @ts-ignore - Turbopack type may not be in all versions but satisfies the build error
+  turbopack: {},
 };
 
 export default nextConfig;
