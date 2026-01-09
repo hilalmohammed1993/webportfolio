@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: process.env.NODE_ENV === 'development' ? undefined : 'export',
+  /* Vercel handles builds automatically. We remove 'output: export' 
+     to ensure API routes and the Admin panel work correctly. */
   images: {
     unoptimized: true,
   },

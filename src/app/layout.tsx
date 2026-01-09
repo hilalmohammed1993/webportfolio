@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   description: "Product Manager Portfolio",
 };
 
+import JarvisWidget from "@/components/chat/JarvisWidget";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -49,6 +51,7 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
         {children}
+        <JarvisWidget />
       </body>
     </html>
   );

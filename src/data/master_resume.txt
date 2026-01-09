@@ -1,0 +1,171 @@
+﻿HILAL MOHAMMED
+ 📞+971504917374, +91 9020602011
+✉️ hilalmohammed1993@gmail.com
+🔗 linkedin.com/in/hilal-mohammed-68900777
+________________
+
+
+SUMMARY
+Product Manager and former Software Engineer with over 7 years of cross-functional experience across AI-driven B2B SaaS platforms, sales enablement, web development, and enterprise process transformation. Proven success in launching scalable features, driving automation, optimizing infrastructure, and integrating advanced AI technologies like LLMs, TTS, and NLP. Holds an MBA from IIM Visakhapatnam and a B.Tech in CS. Skilled in Agile, roadmap execution, cloud infra migration, and high-impact stakeholder collaboration.
+________________
+
+
+PROFESSIONAL EXPERIENCE
+Product Manager – Nytro.ai (AI-Powered Sales Enablement)
+ Marketstar | Aug 2024 – Present
+* Leading product development for an AI-driven B2B platform powering sales onboarding, role-plays, and readiness workflows with LLMs (OpenAI, Gemini).
+* Designed memory-based contextual awareness, feeding lore and backstories into role-plays to improve simulation depth and conversation continuity, resulting in 25% higher realism scores in user feedback.
+* Designed and launched an AI-driven coaching module that evaluates user performance across multiple attempts and provides personalized feedback with clear pros, cons, and improvement suggestions.
+
+* Built a Prospect Journey module to structure exercises—combining pitches, role plays, texts, and emails—into end-to-end, data-driven learning paths.
+
+* Implemented architectural upgrades to STT and TTS engines, cutting AI bot response latency by 50% and improving real-time simulation experience.
+
+* Integrated multiple persona voice models from Google and Azure, enabling diverse tone customization; standardized AI persona definitions to eliminate authoring errors.
+
+* Deployed continuous user listening capability, allowing participants to interrupt and interact dynamically with the AI bot, enhancing realism and engagement.
+* Achieved 50% reduction in latency for AI bot responses by implementing continuous streaming in speech-to-text pipelines, significantly improving global UX.
+* Introduced parameterized authoring for scenario generation, enhancing dynamic question/response creation and improving scenario diversity by 40% across training sessions.
+* Delivered DIY role-plays with dynamic role allocation, increasing user engagement and self-created session adoption by 35% in the first quarter.
+* Built external APIs for seamless client integration, enabling real-time sync of user activity and training reports into enterprise LMS/CRM systems.
+* Implemented behavioral controls and persona customization, giving authors flexibility to tailor AI bot tone, style, and difficulty—leading to 30% higher satisfaction ratings among trainers.
+* Enabled multi-voice simulation models, improving realism and personalization of AI role-plays across 33+ languages.
+* Reduced evaluation inconsistencies between LLMs by 70% by segregating prompts and refining performance scoring methodologies.
+* Curated progression dashboards and coaching insights, driving 20% improvement in user performance across repeat attempts.
+
+________________
+
+
+Product Manager - Business Intelligence
+ Indiamart Intermesh Ltd. | Dec 2022 – Aug 2024
+   * Drove product innovation in B2B cloud telephony using KPI-based process monitoring.
+   * Launched Red Minus & Green Plus features, increasing supplier call conversion by 15%.
+   * Improved assignment algorithm saving ₹3.75L annually; introduced OMNI Channel communication.
+   * Led major architectural overhauls:
+   * PNS4X rollout reducing 90% fixed costs and securing user data
+   * C2C module with Single Leg Architecture, saving ₹85L+ annually
+   * Vendor Calling Grid design, cutting routing costs by 62%
+   * Built chatbot with DialogFlow & GPT-3.5 integration for NLP-driven automation.
+   * Regularly presented product roadmap and strategy at company-wide forums and conclaves.
+   * Spam Detection - Identified patterns of caller numbers, POC with Truecaller, Auditing criteria, Improve detection algorithm, Automate spam detection.
+   * Mobile - Android, Msite, Desktop, iOS, Whatsapp - Funnel. Clicks (Pages - MCAT, PDP, search), Attempt,Applicable,Success, Fail.
+   * Conducted industry and competitor analysis to inform product feature roadmap.
+
+________________
+
+
+SMT – Program Management
+ HCL Technologies | May 2021 – Nov 2022
+      * Managed transformation for tech clients including Google: order flow, deal strategy, and process fulfillment.
+Identified $800K in potential savings via Time & Motion study (6.52% gain).
+      * Unified processes across domains, eliminating 61.9% redundancies and 15% cross-function overlaps.
+      * Delivered COPC-aligned training frameworks and led investment ROI planning for EPP 2022.
+________________
+
+
+Product Management Intern
+ Giantview Technologies | Apr 2020 – Jul 2020
+         * Prioritized 15 features from 40+ based on market analysis and user metrics in the influencer marketing domain.
+         * Created wireframes and PRDs using Axure; improved user engagement/retention by 15%.
+         * Defined personas and user journeys for role-based feature delivery.
+________________
+
+
+Engineer – Web Development
+ QBurst Technologies | Aug 2016 – Apr 2019
+         * Developed 7+ client-facing websites using Drupal, WordPress, PHP, Laravel, and JavaScript.
+         * Acted as solo backend developer on key projects; introduced internal software templates that cut dev effort by 40%.
+         * Integrated APIs (Google Maps, Iterable), web analytics (GA, GTM, Optimize), and executed performance tuning.
+         * Built OCRDictionary Android app using Google Tesseract for image-to-text recognition.
+________________
+
+
+PASSION PROJECTS
+Crypto Analysis
+         * Market Trend Analysis: Automatically calculates SMA50 and SMA200 to detect "Golden Cross" or "Death Cross" scenarios.
+         * Support & Resistance: Naive local maxima/minima detection to identify key price levels.
+         * Sentiment Analysis: Fetches the latest global news regarding a specific coin and analyzes sentiment (Positive/Negative/Neutral) using Natural Language Processing.
+         * Dual Interface:
+         * CLI: Fast, rich-text output in your terminal.
+         * Web Dashboard: Interactive UI served via FastAPI.
+         * Multi-Exchange Support: Powered by CCXT (defaults to Binance) for high-frequency data fetching.
+Tech Stack
+         * Language: Python 3.x
+         * Backend Framework: FastAPI & Uvicorn
+         * Data Science: Pandas, NumPy
+         * NLP: TextBlob
+         * Web Scraping: BeautifulSoup4
+         * CLI Styling: Rich
+         * Data Provider: CCXT (Binance) & Google News RSS
+Humanize AI
+A post-processing tool designed to refine AI-generated content into natural, human-like writing while preserving rich text formatting.
+Features
+         * Format Preservation: Keeps your bold text, lists, and links intact.
+         * Humanization Engine: Uses Gemini AI to improve burstiness, variance, and lexical diversity.
+         * Privacy Focus: Your API Key is stored locally in your browser and never leaves your machine except to talk to Google's API.
+         * Custom Guidelines: Input your own style requirements for personalized results.
+Job Leads Scraper
+A premium Google Chrome extension designed to streamline lead generation by scraping LinkedIn profile data and pushing it directly to a Google Sheet.
+
+
+Features
+         * One-Click Scraping: Extract Full Name, Current Company, Role/Designation, and Profile URL.
+         * Waterfall Email Extraction:
+         * Displays results in a dedicated "Email" column in your spreadsheet.
+         * Direct Google Sheets Integration: Real-time data appending via the official Google Sheets API.
+         * Glassmorphism UI: A modern, sleek interface built for a premium user experience.
+         * Privacy First: All data is pushed directly to your personal Google Sheet using secure OAuth2 authentication.
+ACADEMIC PROJECTS
+Patient Health Monitoring System
+         * Designed image processing model for cancer detection using tissue structure analysis.
+         * Built in Python (Flask/Django) and deployed with visual classifier interface.
+College Attendance Tracker
+         * Developed Android app to digitize attendance and visualize patterns via mobile dashboard.
+         * Used Java, Android Studio, MySQL for complete CRUD operations and reporting.
+
+________________
+
+
+EDUCATION
+MBA – Indian Institute of Management (IIM) Visakhapatnam
+ 2019 – 2021 | GPA: 3.01/4.00
+B.Tech – Computer Science Engineering
+ Govt. Model Engineering College, 2012 – 2016 | CGPA: 7.22/10.00
+Sharjah Indian School
+ Class XII: 90% | Class X: CGPA 9.0/10.0
+________________
+
+
+SKILLS & TOOLS
+            * AI & ML: LLM Integration (OpenAI, Gemini), NLP, Contextual Memory, Persona Control, Prompt Engineering
+            * Product Management: Roadmapping from 0 to 1, Customer Lifecycle Strategy, CLM, Agile Delivery, A/B Testing
+            * Growth & Analytics: User Acquisition Funnels, Predictive Analytics, Intelligence Dashboards, Amplitude, Mixpanel
+            * UX & Engagement: Personalization, Retention Strategies, Feedback Loops, Mobile/Web Experiences
+            * Cross-Functional Collaboration: Engineering, Design, Analytics, Marketing, Sales, Customer Support
+            * Tools & Tech: Generative AI, Agentic AI, Power BI, GA, GTM, DialogFlow, Firebase, GCP, Balsamiq, Axure
+            * Methodologies: Agile (Scrum/Kanban), OKRs, User Research, Market and Competitor Analysis
+            * Tech Stack: Python, GCP, Firebase, React, PHP, DialogFlow, REST APIs
+________________
+
+
+LEADERSHIP & AWARDS
+            * Emerging Star of the Year - Indiamart (2023 - 2024)
+            * Pillar of Success – Indiamart (2023)
+            * Student Senate Chairman – MEC
+            * Placement Representative – IIM Visakhapatnam
+            * Event Manager – Excel 2015 (1600+ attendees, 20+ sub-teams)
+            * Olympiad Winner – SOF & GMO (Math/Physics, 2010–2012)
+            * NSS Volunteer – Led blood drives, e-waste campaigns
+            * Scout Patrol Leader – Sharjah Indian School
+________________
+
+
+LANGUAGES
+English | Hindi | Malayalam | Arabic
+________________
+
+
+REFERENCES
+Available upon request
+(Manan Bhatia - Marketstar, Gaurav Jain – Indiamart, Ankur Gupta – HCL, Fran Baby – QBurst)
+________________
