@@ -276,12 +276,12 @@
   ],
   "projects": [
     {
-      "title": "Job Leads Scraper",
-      "description": "Google Chrome extension designed to streamline lead generation by scraping LinkedIn profile data.",
-      "link": "https://github.com/hilalmohammed1993/jobleadsscraper",
+      "title": "Crypto Trading Bot",
+      "description": "Automated, multi-agent crypto trading system that analyzes markets, manages risk, seeks user approval, and executes trades",
+      "link": "",
       "link_text": "View on Github",
-      "image_url": "uploads/1767891546343-linkedin-scraping.svg",
-      "id": 1767891551712
+      "image_url": "uploads/1768149582648-e80024c2-2825-40a1-a493-b694d301e06e.png",
+      "id": 1768149635935
     },
     {
       "title": "Humanize AI",
@@ -298,6 +298,14 @@
       "link": "https://github.com/hilalmohammed1993",
       "link_text": "View on Github",
       "image_url": "uploads/1767436429447-5-Basics-of-Cryptocurrency-Technical-Analysis-new.png"
+    },
+    {
+      "title": "Job Leads Scraper",
+      "description": "Google Chrome extension designed to streamline lead generation by scraping LinkedIn profile data.",
+      "link": "https://github.com/hilalmohammed1993/jobleadsscraper",
+      "link_text": "View on Github",
+      "image_url": "uploads/1767891546343-linkedin-scraping.svg",
+      "id": 1767891551712
     }
   ],
   "socials": [

@@ -6,7 +6,7 @@ export default function Experience({ experience }: { experience: any[] }) {
     if (!experience || !Array.isArray(experience)) return null;
 
     return (
-        <div style={{ marginTop: '32px' }}>
+        <div>
             <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] flex items-center gap-4 uppercase" style={{ marginBottom: '32px' }}>
                 PROFESSIONAL EXPERIENCE
             </h2>
